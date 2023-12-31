@@ -1,0 +1,94 @@
+import Button from './Button';
+import { useState, useEffect, useRef, useContext } from 'react';
+import { GameAPI } from '../helpers/GameAPI';
+import PlayerForm from './PlayerForm';
+import { currentPlayerContext } from '../helpers/GameContext';
+import NewStory from './NewStory';
+import LoadStory from './LoadStory';
+
+const MainMenu = ({ clickAudio }) => {
+  const [login, setLogin] = useState(false);
+  const {
+    currentPlayer,
+    setCurrentPlayer,
+    menuAnimationClass,
+    setMenuAnimationClass,
+  } = useContext(currentPlayerContext);
+  const [newGame, setNewGame] = useState(false);
+  const [loadGame, setLoadGame] = useState(false);
+
+  // const [menu, mainMenu] = useState(false);
+
+  // setTimeout(() => setLoad(true), 14000);
+
+  // useEffect(() => {
+  //   if (login = 'concluded'){
+  //     const showMenu()
+  //   }
+  // }, [login]);
+
+  return (
+    <>
+      <div className="menuOptions mt-5">
+        {!login && (
+          <>
+            <div
+              className="set-id-button p-4"
+              onClick={() => setLogin('pending')}
+            >
+              {' '}
+              Set Player_ID
+            </div>
+          </>
+        )}
+        {login === 'pending' &&
+          !newGame &&
+          login === 'pending' &&
+          !loadGame && (
+            <PlayerForm setLogin={setLogin} clickAudio={clickAudio} />
+          )}
+        {login === 'concluded' &&
+          !newGame &&
+          login === 'concluded' &&
+          !loadGame && (
+            <div className={menuAnimationClass}>
+              <Button
+                addClass="menu-button"
+                action={() => {
+                  clickAudio.current.play();
+                  setNewGame(true);
+                  setMenuAnimationClass('regular-menu-container-normal');
+                }}
+                text="New Game"
+              />
+              <Button
+                addClass="menu-button"
+                text="Load Game"
+                action={() => {
+                  clickAudio.current.play();
+                  setLoadGame(true);
+                  setMenuAnimationClass('regular-menu-container-normal');
+                }}
+              />
+              <Button
+                addClass="menu-button"
+                text="Credits"
+                action={() => {
+                  clickAudio.current.play();
+                  setMenuAnimationClass('regular-menu-container-normal');
+                }}
+              />
+            </div>
+          )}
+        {newGame && !loadGame && (
+          <NewStory setNewGame={setNewGame} newGame={newGame} />
+        )}
+      </div>
+      {!newGame && loadGame && (
+        <LoadStory setLoadGame={setLoadGame} loadGame={loadGame} />
+      )}
+    </>
+  );
+};
+
+export default MainMenu;
