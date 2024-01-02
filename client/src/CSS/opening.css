@@ -1,5 +1,5 @@
 .opening-warnings {
-  margin-top: 24%;
+  margin-top: 30dvh;
   margin-left: 15%;
   margin-right: 15%;
   text-align: center;
@@ -7,15 +7,42 @@
 
 .opening-image-container {
   margin-top: 1%;
+  overflow: hidden;
+  position: relative;
+  animation: fadeIn 10s;
 }
 
-.opening-image {
+.image-background {
+  height: 100%;
+  width: 300%;
+  background-repeat: repeat-x;
+  background-size: contain;
+  position: relative;
+  animation: Slide-Img 10s linear infinite;
+}
+
+@keyframes Slide-Img {
+  0% {
+    transform: translate(0);
+  }
+  100% {
+    transform: translate(-60dvw);
+  }
+}
+
+/* .game-opening-image {
   animation: fadeIn 10s;
+} */
 
-  /* transform: scaleX(1.2);
-  transform: (0.9); */
-
-  /* box-shadow: 0 0 10px 10px rgba(100, 0, 100, 0.32); */
+.game-title {
+  opacity: 1;
+  position: absolute;
+  animation: fadeIn 5s;
+  z-index: 2;
+  margin: 10% 25% 0 38%;
+  font-size: 25px;
+  font-weight: 900;
+  text-shadow: 3px 3px black;
 }
 
 .menu-hidden {
@@ -45,16 +72,19 @@
 .deleted-file {
   opacity: 1;
   animation: Delete-File 1s ease 0.5s forwards;
+  background-color: rgba(0, 0, 0, 0.332);
+  box-shadow: 0px 0px 10px rgb(238, 69, 69);
+  cursor: not-allowed;
+}
+
+.deleted-file button {
+  pointer-events: none;
+  cursor: not-allowed;
 }
 
 .deleted-file::before {
   content: 'DELETED';
   color: red;
-}
-
-.deleted-file * {
-  /* opacity: 0; */
-  content: 'DELETED';
 }
 
 @keyframes Delete-File {
@@ -66,6 +96,41 @@
     opacity: 0;
     transform: translateX(200px);
   }
+}
+
+.loading-file {
+  transform: scale(1);
+  animation: Loading-File 0.5s ease forwards;
+  box-shadow: 0px 0px 10px white;
+}
+
+.loading-file::before {
+  content: 'LOADING...';
+  color: purple;
+}
+
+.loading-file button {
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+@keyframes Loading-File {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.block-itens .form-div {
+  cursor: not-allowed;
+  background-color: rgba(34, 34, 34, 0.351);
+}
+
+.block-itens button,
+.block-itens input {
+  pointer-events: none;
 }
 
 .hide-nav {
@@ -95,14 +160,6 @@
   }
 }
 
-.tale {
-  margin-top: 150px;
-  margin-left: 350px;
-  position: absolute;
-  font-size: larger;
-  animation: fadeIn 5s;
-}
-
 .game-button {
   color: white;
   background-color: transparent;
@@ -111,15 +168,24 @@
 }
 
 .game-button:hover,
-.back-button:hover {
+.back-button:hover,
+.log-out-button:hover,
+.set-id-button:hover {
   /* border: 0.1px outset #d0d0d087; */
   box-shadow: -0px -0px 5px 3px rgba(142, 143, 169, 0.378);
 }
 
 .game-button:hover::before,
-.back-button:hover::before {
+.back-button:hover::before,
+.log-out-button:hover {
   content: '> ';
-  font-size: small;
+  /* font-size: small; */
+}
+
+.log-out-button {
+  border: 0.5 solid white !important;
+  color: yellow;
+  background-color: transparent;
 }
 
 .menu-button,
@@ -167,4 +233,12 @@
 }
 .load-file-container {
   border: 1px solid white;
+}
+
+.skip-button-container {
+  text-align: end;
+  /* margin-top: 30dvh; */
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 10dvh;
 }

@@ -54,7 +54,8 @@ export const update = async (req, res, next) => {
     await saved_game.update(req.body);
     return res.json({ saved_game: saved_game });
   } catch (err) {
-    return next(err);
+    return res.json(err);
+    // return next(err);
   }
 };
 

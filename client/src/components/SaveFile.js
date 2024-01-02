@@ -1,12 +1,17 @@
 import { v4 as uuidv4 } from 'uuid';
 import Button from './Button';
 import { GameAPI } from '../helpers/GameAPI';
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef, useContext, useEffect } from 'react';
 import { currentPlayerContext } from '../helpers/GameContext';
 import { useNavigate } from 'react-router-dom';
 import NumberConverter from '../helpers/NumberConverter';
+import moment from 'moment';
 
 const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG }) => {
+  const now = moment('2024-01-01 21:33:22.935-05').format('YYYY-MM-DD HH:mm');
+
+  console.log(now);
+
   const navigate = useNavigate();
   const {
     currentPlayer,
@@ -21,14 +26,18 @@ const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG }) => {
   const loadGameHandler = (id, setting, act, dialogue_id) => {
     setCurrentGameID(id);
     setMenuDisplay('menu-hidden');
+    setTimeout(() => {
+      const slotDiv = document.getElementById(id);
+      slotDiv.classList.add('loading-file');
+    }, 0);
     if (dialogue_id === 'P0') {
       setTimeout(() => {
         navigate('/prologue');
-      }, 4000);
+      }, 3000);
     } else {
       setTimeout(() => {
-        navigate('/actI', { state: { setting, act } });
-      }, 4000);
+        navigate('/story', { state: { setting, act } });
+      }, 3000);
     }
   };
 
@@ -58,9 +67,12 @@ const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG }) => {
             className={`load-file-container container py-2`}
           >
             <h5>
-              {NumberConverter(file.act)}: {file.setting.toUpperCase()}
+              {file.setting === 'prologue'
+                ? 'PROLOGUE'
+                : `${NumberConverter(file.act)}:
+              ${file.setting.toUpperCase()}`}
             </h5>
-            <h5>{file.updatedAt}</h5>
+            <h5>{moment(`${file.updatedAt}`).format('YYYY-MM-DD HH:mm')}</h5>
             <div className="d-flex justify-content-evenly">
               <Button
                 text="Load game"

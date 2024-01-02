@@ -5,14 +5,11 @@ import { GameAPI } from '../helpers/GameAPI';
 import Button from './Button';
 
 const PlayerForm = ({ setLogin, clickAudio }) => {
-  //   const initialState = {
-  //     player_id: '',
-  //   };
-
   const [formData1, setFormData1] = useState('');
   const [formData2, setFormData2] = useState('');
   const [submit, setSubmit] = useState(false);
   const [alertMSG, setAlertMSG] = useState();
+  const [blockClass, setBlockClass] = useState('');
 
   const creatingPlayerMessage = 'Creating new Player_ID';
   const loadingPlayerMessage = 'Loading Player_ID';
@@ -45,7 +42,7 @@ const PlayerForm = ({ setLogin, clickAudio }) => {
   //   const handleLeaveInput = (e) => {
   //     setFormData2('');
   //   };
-
+  console.log(currentPlayer);
   const closeAlert = () => {
     setSubmit(false);
     setAlertMSG();
@@ -63,10 +60,11 @@ const PlayerForm = ({ setLogin, clickAudio }) => {
         } else {
           setAlertMSG(creatingPlayerMessage);
           setSubmit(true);
+          setBlockClass('block-itens');
           const { data } = await createPlayer(formData1);
           setTimeout(() => {
             setCurrentPlayer(data.player);
-            setLogin('concluded');
+            setLogin(true);
           }, 2000);
         }
       } else {
@@ -76,39 +74,27 @@ const PlayerForm = ({ setLogin, clickAudio }) => {
         } else {
           setAlertMSG(loadingPlayerMessage);
           setSubmit(true);
+          setBlockClass('block-itens');
           const { data } = await loadPlayer(formData2);
           setTimeout(() => {
             setCurrentPlayer(data.player);
-            setLogin('concluded');
+            setLogin(true);
           }, 2000);
         }
       }
     } catch (err) {
       setAlertMSG(err.response.data.error.message);
       setSubmit(true);
+      setBlockClass('');
     }
     setFormData1('');
     setFormData2('');
-    // setLogin(true);
-
-    // setSubmit(false);
-    // e.preventDefault();
-    // try {
-    //   const newUser = await Authenticate.register(formData);
-    //   setAlertMSG(sucessMessage);
-    //   setSubmit(true);
-    //   setTimeout(() => {
-    //     setFormData(initialState);
-    //     navigate('/login');
-    //   }, 3000);
-    // } catch (err) {
-    //   setAlertMSG(failureMessage);
-    //   setSubmit(true);
-    // }
   };
 
   return (
-    <div className="container d-flex justify-content-center flex-column align-items-center">
+    <div
+      className={`container d-flex justify-content-center flex-column align-items-center mt-4 ${blockClass}`}
+    >
       <div className="mb-3 form-div p-2">
         <form onSubmit={handleSubmit} ref={createForm}>
           <div className="form-container">
@@ -197,7 +183,7 @@ const PlayerForm = ({ setLogin, clickAudio }) => {
       </div>
       {alertMSG !== creatingPlayerMessage &&
         alertMSG !== loadingPlayerMessage && (
-          <div className="d-flex justify-content-center mt-1">
+          <div className="d-flex justify-content-center mt-1 mb-1">
             <button
               className="back-button p-2"
               type="button"

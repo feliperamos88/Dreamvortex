@@ -6,21 +6,46 @@ import MainMenu from './MainMenu';
 import { currentPlayerContext } from '../helpers/GameContext';
 
 const Opening = () => {
-  const { menuDisplay, setMenuDisplay } = useContext(currentPlayerContext);
+  const {
+    menuDisplay,
+    setMenuDisplay,
+    currentPlayer,
+    setCurrentPlayer,
+    skipBTN,
+    setSkipBTN,
+    gameHandler,
+    setGameHandler,
+  } = useContext(currentPlayerContext);
   const [visible, setVisible] = useState(false);
   const [openTXT, setOpenTXT] = useState('');
-  // CHANGE TO FALSE THE FOLLOWING THREE!
-  const [image, setImage] = useState(true);
-  const [menu, setMenu] = useState(true);
-  const [title, setTitle] = useState(true);
-  // CHANGE TO FALSE THE THREE ABOVE!
+  const [image, setImage] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const [title, setTitle] = useState(false);
   const [agree, setAgree] = useState();
 
-  // useEffect(() => {
-  //   setTimeout(() => {
-  //     setAgree('pending');
-  //   }, 3000);
-  // }, []);
+  const songAudio = useRef();
+  const clickAudio = useRef();
+
+  useEffect(() => {
+    if (!currentPlayer) {
+      setTimeout(() => {
+        setAgree('pending');
+      }, 3000);
+    }
+  }, [currentPlayer]);
+
+  useEffect(() => {
+    if (currentPlayer) {
+      skipOpeningHandler();
+    }
+  }, [currentPlayer]);
+
+  const skipOpeningHandler = () => {
+    setImage(true);
+    setTitle(true);
+    setMenu(true);
+    setAgree('');
+  };
 
   const fn = async (value, time) => {
     return new Promise((resolve, reject) =>
@@ -31,68 +56,79 @@ const Opening = () => {
     );
   };
 
-  const songAudio = useRef();
-  const clickAudio = useRef();
+  useEffect(() => {
+    const initialScreen = async () => {
+      setOpenTXT('A COOL COMPANY NAME WILL COME HERE!');
+      setTimeout(() => {
+        songAudio.current.play();
+        setSkipBTN(true);
+        setGameHandler((prevState) => ({
+          ...prevState,
+          handler: skipOpeningHandler,
+        }));
+      }, 4000);
+      await fn(true, 8000);
+      await fn(false, 5000);
+      setOpenTXT('SOMETHING WILL COM HERE TOO');
+      await fn(true, 5000);
+      await fn(false, 5000);
+      setTimeout(() => {
+        setImage(true);
+      }, 7000);
 
-  // useEffect(() => {
-  //   const initialScreen = async () => {
-  //     setOpenTXT('A COOL COMPANY NAME WILL COME HERE!');
-  //     setTimeout(() => {
-  //       songAudio.current.play();
-  //     }, 4000);
-  //     await fn(true, 8000);
-  //     await fn(false, 5000);
-  //     setOpenTXT('SOMETHING WILL COM HERE TOO');
-  //     await fn(true, 5000);
-  //     await fn(false, 5000);
-  //     setTimeout(() => {
-  //       setImage(true);
-  //     }, 7000);
-
-  //     setTimeout(() => {
-  //       setTitle(true);
-  //     }, 20000);
-  //     setTimeout(() => {
-  //       setMenu(true);
-  //     }, 25000);
-  //   };
-  //   if (agree === 'accepted') {
-  //     initialScreen();
-  //   }
-  // }, [agree]);
+      setTimeout(() => {
+        setTitle(true);
+      }, 20000);
+      setTimeout(() => {
+        setSkipBTN(false);
+        setMenu(true);
+      }, 25000);
+    };
+    if (agree === 'accepted') {
+      initialScreen();
+    }
+  }, [agree]);
 
   return (
-    <div className={`d-flex justify-content-center ${menuDisplay} `}>
-      <Audio src="audio/MorbidCuriosity.mp3" ref={songAudio} loop={'loop'} />
-      <ButtonClick src="audio/buttonsound.mp3" ref={clickAudio} />
-      <div className={image ? 'menu' : 'opening-warnings'}>
-        {agree === 'pending' ? (
-          <>
-            <Agreement />{' '}
-            <Button
-              action={() => {
-                setAgree('accepted');
-                clickAudio.current.play();
-              }}
-              text="Agree"
-            />
-          </>
-        ) : (
-          ''
-        )}
-
-        {visible && <h1 className="">{openTXT}</h1>}
-        <div className="container-fluid opening-image-container col-10 col-lg-6 ">
-          {title && <div className="tale">A title will come here!</div>}
-          {image && (
-            <img
-              src="images/settings/menucityjpg.jpg"
-              className="img-fluid opening-image"
-            />
+    <>
+      <div className={`d-flex justify-content-center ${menuDisplay} `}>
+        <Audio src="audio/MorbidCuriosity.mp3" ref={songAudio} loop={'loop'} />
+        <ButtonClick src="audio/buttonsound.mp3" ref={clickAudio} />
+        <div className={image ? 'menu' : 'opening-warnings'}>
+          {agree === 'pending' ? (
+            <>
+              <Agreement />{' '}
+              <Button
+                action={() => {
+                  setAgree('accepted');
+                  clickAudio.current.play();
+                }}
+                text="Agree"
+              />
+            </>
+          ) : (
+            ''
           )}
-        </div>
-        {menu && <MainMenu clickAudio={clickAudio} />}
-        {/* {menu && ( 
+
+          {visible && agree === 'accepted' && <h1 className="">{openTXT}</h1>}
+
+          {image && (
+            <div className="opening-image-container">
+              {title && (
+                <div className="game-title">A title will come here!</div>
+              )}
+              <div
+                className="image-background"
+                style={{
+                  backgroundImage: `url('images/settings/menucityjpg.jpg')`,
+                }}
+              ></div>
+            </div>
+          )}
+
+          {menu && <MainMenu clickAudio={clickAudio} />}
+
+          {/* {menu && ( 
           <div className="menuOptions mt-5">
             <div>
               <Button
@@ -119,8 +155,20 @@ const Opening = () => {
             </div>
           </div>
         )} */}
+        </div>
       </div>
-    </div>
+      {/* <div className="skip-button-container container">
+        {skipBTN && (
+          <Button
+            text="Skip Intro"
+            action={() => {
+              skipOpeningHandler();
+              setSkipBTN(false);
+            }}
+          />
+        )}
+      </div> */}
+    </>
   );
 };
 

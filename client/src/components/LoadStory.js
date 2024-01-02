@@ -24,6 +24,12 @@ const LoadStory = ({ loadGame, setLoadGame }) => {
   const loadingGameMSG = 'Loading your files';
   const failureMSG = 'Sorry, but something went wrong!';
 
+  const updatePlayer = async (id) => {
+    const { data } = await GameAPI.getOne('player', id);
+    setCurrentPlayer(data.player);
+    setLoadGame(false);
+  };
+
   const loadPlayer = async (id) => {
     try {
       setAlertMSG(loadingGameMSG);
@@ -55,30 +61,6 @@ const LoadStory = ({ loadGame, setLoadGame }) => {
     }
   }, [saveFiles]);
 
-  //   const createNewGame = async () => {
-  //     const { data } = await GameAPI.create('gameslot', {
-  //       player_id: currentPlayer.player_id,
-  //       dialogue_id: 'P0',
-  //     });
-  //     setCurrentGameID(data.game.id);
-  //     console.log(data.game.id);
-  //   };
-
-  //   const createGameSlot = async () => {
-  //     setAlertMSG(creatingGameMSG);
-  //     try {
-  //       await createNewGame();
-  //       const { data } = await loadPlayer(currentPlayer.player_id);
-  //       setCurrentPlayer(data.player);
-  //       setMenuDisplay('menu-hidden');
-  //       setTimeout(() => {
-  //         navigate('/prologue');
-  //       }, 6000);
-  //     } catch (err) {
-  //       setAlertMSG(failureMSG);
-  //     }
-  //   };
-
   useEffect(() => {
     const load = async () => {
       await loadPlayer(currentPlayer.player_id);
@@ -88,22 +70,15 @@ const LoadStory = ({ loadGame, setLoadGame }) => {
     }
   }, [loadGame]);
 
-  //   useEffect(() => {
-  //     if (gameSlot) {
-  //       createGameSlot();
-  //     }
-  //   }, [gameSlot]);
-
   return (
     <>
-      <h4 className="text-center">
+      <h4 className="text-center mt-2">
         {saveFiles.length === 0
           ? 'No saved files'
           : saveFiles.length === 3
           ? "You've reached your maximum (3) of save game slots"
           : ''}
       </h4>{' '}
-      {/* {loadSuccess === 'yay' && <SaveFile saveFiles={saveFiles} />} */}
       <div className="mt-3">
         {saveFiles && (
           <SaveFile
@@ -141,12 +116,12 @@ const LoadStory = ({ loadGame, setLoadGame }) => {
           </div>
         )}
         {loadGame && (
-          <div className="d-flex justify-content-center mt-3">
+          <div className="d-flex justify-content-center mt-2 mb-1">
             <button
               className="back-button p-2 "
               type="button"
               aria-label="Close"
-              onClick={() => setLoadGame(false)}
+              onClick={() => updatePlayer(currentPlayer.player_id)}
               style={{
                 marginLeft: '2px',
                 backgroundColor: 'transparent',

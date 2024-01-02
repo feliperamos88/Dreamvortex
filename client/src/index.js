@@ -7,6 +7,8 @@ import './CSS/index.css';
 import './CSS/prologue.css';
 import './CSS/opening.css';
 import './CSS/form.css';
+import './CSS/story.css';
+import './CSS/App.css';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

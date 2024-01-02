@@ -3,16 +3,19 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { currentPlayerContext } from '../helpers/GameContext';
 import { GameAPI } from '../helpers/GameAPI';
 import SettingWindow from './SettingWindow';
+import Button from './Button';
 import { v4 as uuidv4 } from 'uuid';
+import NumberConverter from '../helpers/NumberConverter';
 
 const MainWindow = () => {
   const location = useLocation();
   const [currentText, setCurrentText] = useState(false);
-  // const [data2, setData2] = useState('');
+  const [finalText, setFinalText] = useState(false);
   const [stage, setStage] = useState(location.state.setting);
   const [curretAct, setCurrentAct] = useState(location.state.act);
   const [currentSetting, setCurrentSetting] = useState('');
   const [display, setDisplay] = useState('');
+  const [actVisible, setActVisible] = useState(false);
 
   const { currentPlayer, setCurrentPlayer, currentGameID, setCurrentGameID } =
     useContext(currentPlayerContext);
@@ -27,37 +30,6 @@ const MainWindow = () => {
     return array;
   };
 
-  // const fetchAll = async () => {
-  //   const { data } = await GameAPI.getAll('setting');
-  //   const settingsArray = shuffleArray(data.settings);
-  //   setData2(settingsArray);
-  // };
-
-  // const actChangeHandle = async () => {
-  //   try {
-  //     const { data } = await GameAPI.getOne('setting', settings[0].name);
-  //     await GameAPI.create('progress', {
-  //       setting_name: stage,
-  //       saved_game_id: currentGameID,
-  //     });
-  //     const initial_setting = data.setting.dialogues.find(
-  //       (value) => value.opening_text
-  //     );
-
-  //     console.log(initial_setting);
-  //     await GameAPI.update('gameslot', currentGameID, {
-  //       setting: data.setting.name,
-  //       dialogue_id: initial_setting.id,
-  //     });
-  //     setDisplay('menu-hidden');
-  //     setTimeout(() => {
-  //       navigate('/actI', { state: data.setting.name });
-  //     }, 6000);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-
   const getSettings = async () => {
     try {
       const savedGame = await GameAPI.getOne('gameslot', currentGameID);
@@ -69,12 +41,11 @@ const MainWindow = () => {
         (value) => !currentProgress.includes(value.name)
       );
       const unfinishedSettings = shuffleArray(acts);
-      console.log(unfinishedSettings.length);
+
       if (unfinishedSettings.length < 1) {
         console.log('end of the line!');
       } else {
         setStage(unfinishedSettings[0].name);
-        console.log(unfinishedSettings);
       }
     } catch (err) {
       console.log(err);
@@ -83,24 +54,26 @@ const MainWindow = () => {
 
   const fetchSetting = async () => {
     const { data } = await GameAPI.getOne('setting', stage);
-
     const initial_setting = data.setting.dialogues.find(
       (value) => value.opening_text
     );
-    console.log(initial_setting);
     await GameAPI.update('gameslot', currentGameID, {
       setting: data.setting.name,
       dialogue_id: initial_setting.id,
       act: curretAct,
     });
-    setDisplay('menu-hidden');
+    if (stage !== 'prologue') {
+      setDisplay('setting-hidden');
+    }
     setTimeout(() => {
+      setActVisible(true);
+    }, 3000);
+    setTimeout(() => {
+      setActVisible(false);
       setCurrentSetting(data.setting);
       setCurrentText(initial_setting);
-      setDisplay('');
-    }, 3000);
-
-    // setCurrentText(data.setting.dialogues.find((value) => value.opening_text));
+      setDisplay('setting-show');
+    }, 10000);
   };
 
   const makeChoiceHandler = (e) => {
@@ -126,25 +99,41 @@ const MainWindow = () => {
 
   useEffect(() => {
     if (currentText.ending_text) {
-      actChangeHandle();
+      setFinalText(true);
     }
   }, [currentText]);
 
   useEffect(() => {
     fetchSetting();
-    console.log(stage);
   }, [stage]);
 
   return (
     <>
+      {actVisible && (
+        <div className="act-title text-center">
+          <h1 className="">{NumberConverter(curretAct)}</h1>
+          <h1>{stage.toUpperCase()}</h1>
+        </div>
+      )}
+
       <div className={display}>
         <SettingWindow
           makeChoiceHandler={makeChoiceHandler}
           currentSetting={currentSetting}
           currentText={currentText}
         />
-        {/* {data2 && data2.map((value) => <h1 key={uuidv4()}>{value.name}</h1>)} */}
       </div>
+      {finalText && (
+        <div className="container text-center">
+          <Button
+            action={() => {
+              actChangeHandle();
+              setFinalText(false);
+            }}
+            text="Continue"
+          />
+        </div>
+      )}
     </>
   );
 };

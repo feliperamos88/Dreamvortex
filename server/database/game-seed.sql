@@ -7,19 +7,19 @@
 
 INSERT INTO settings (name, background_pic, character)
 VALUES ('forest',
-        'images/settings/forest.jpeg',
+        'images/settings/forest2.png',
         'hooded_figure'),
          ('desert',
         'images/settings/desert.gif',
         'snake'),
-         ('urban',
+         ('city',
         'images/settings/urban.gif',
         'witch_woman'),
          ('ocean',
         'images/settings/sunriseocean.gif',
         'shark'),
          ('sky',
-        'images/settings/purplesky.png',
+        'images/settings/purplesky2.png',
         'sun_figure'),
          ('prologue', NULL, NULL),
          ('final', NULL, NULL);
@@ -71,20 +71,21 @@ VALUES
         ('D3BB', 'D3BB', FALSE, 'desert', FALSE, NULL), 
         ('D4X', 'D4X text', FALSE, 'desert', TRUE, NULL), 
         ('D4Z', 'D4Z text', FALSE, 'desert', TRUE, NULL),
- -- URBAN SETTING
-        ('U1', 'U1 Base Text', TRUE, 'urban', FALSE, NULL), 
-        ('U2A', 'U2A Text', FALSE, 'urban', FALSE, NULL),  
-        ('U2B', 'U2B Text', FALSE, 'urban', FALSE, NULL), 
-        ('U3AA', 'U3AA text', FALSE, 'urban', FALSE, NULL),
-        ('U3AB', 'U3AB text', FALSE, 'urban', FALSE, NULL),
-        ('U3BA', 'U3BA text', FALSE, 'urban', FALSE, NULL),
-        ('U3BB', 'U3BB', FALSE, 'urban', FALSE, NULL), 
-        ('U4X', 'U4X text', FALSE, 'urban', TRUE, NULL), 
-        ('U4Z', 'U4Z text', FALSE, 'urban', TRUE, NULL);
+ -- CITY SETTING
+        ('C1', 'C1 Base Text', TRUE, 'city', FALSE, NULL), 
+        ('C2A', 'C2A Text', FALSE, 'city', FALSE, NULL),  
+        ('C2B', 'C2B Text', FALSE, 'city', FALSE, NULL), 
+        ('C3AA', 'C3AA text', FALSE, 'city', FALSE, NULL),
+        ('C3AB', 'C3AB text', FALSE, 'city', FALSE, NULL),
+        ('C3BA', 'C3BA text', FALSE, 'city', FALSE, NULL),
+        ('C3BB', 'C3BB', FALSE, 'city', FALSE, NULL), 
+        ('C4X', 'C4X text', FALSE, 'city', TRUE, NULL), 
+        ('C4Z', 'C4Z text', FALSE, 'city', TRUE, NULL);
 
 INSERT INTO choices (id, choice_text, dialogue_id_from, dialogue_id_to, final_choice)
 VALUES 
--- FOREST SETTING
+-- CHOICES
+-- FOREST SETTING CHOICES
         ('F-CB','1st Choice-B', 'F1', 'F2B', FALSE), 
         ('F-CA','1st Choice-A', 'F1', 'F2A', FALSE), 
         ('F-CAA','2nd Choice-AA', 'F2A', 'F3AA' , FALSE), 
@@ -129,22 +130,22 @@ VALUES
         ('D-CBAB','3rd Choice-BAB', 'D3BA', 'D4Z', TRUE), 
         ('D-CBBA','3rd Choice-BBA', 'D3BB', 'D4X' , TRUE), 
         ('D-CBBB','3rd Choice-BBB', 'D3BB','D4Z' , TRUE),
--- URBAN SETTING
-        ('U-CB','1st Choice-B', 'U1', 'U2B', FALSE), 
-        ('U-CA','1st Choice-A', 'U1', 'U2A', FALSE), 
-        ('U-CAA','2nd Choice-AA', 'U2A', 'U3AA' , FALSE), 
-        ('U-CAB','2nd Choice-AB', 'U2A', 'U3AB', FALSE), 
-        ('U-CBA','2nd Choice-BA', 'U2B', 'U3BA' , FALSE), 
-        ('U-CBB','2nd Choice-BB', 'U2B', 'U3BB' , FALSE), 
-        ('U-CAAA','3rd Choice-AAA', 'U3AA', 'U4X' , TRUE), 
-        ('U-CAAB','3rd Choice-AAB', 'U3AA', 'U4Z', TRUE), 
-        ('U-CABA','3rd Choice-ABA', 'U3AB', 'U4X' , TRUE), 
-        ('U-CABB','3rd Choice-ABB', 'U3AB', 'U4Z' , TRUE), 
-        ('U-CBAA','3rd Choice-BAA', 'U3BA', 'U4X' , TRUE), 
-        ('U-CBAB','3rd Choice-BAB', 'U3BA', 'U4Z', TRUE), 
-        ('U-CBBA','3rd Choice-BBA', 'U3BB', 'U4X' , TRUE), 
-        ('U-CBBB','3rd Choice-BBB', 'U3BB','U4Z' , TRUE),
--- SPACE SETTING
+-- CITY SETTING
+        ('C-CA','1st Choice-A', 'C1', 'C2A', FALSE), 
+        ('C-CB','1st Choice-B', 'C1', 'C2B', FALSE), 
+        ('C-CAA','2nd Choice-AA', 'C2A', 'C3AA' , FALSE), 
+        ('C-CAB','2nd Choice-AB', 'C2A', 'C3AB', FALSE), 
+        ('C-CBA','2nd Choice-BA', 'C2B', 'C3BA' , FALSE), 
+        ('C-CBB','2nd Choice-BB', 'C2B', 'C3BB' , FALSE), 
+        ('C-CAAA','3rd Choice-AAA', 'C3AA', 'C4X' , TRUE), 
+        ('C-CAAB','3rd Choice-AAB', 'C3AA', 'C4Z', TRUE), 
+        ('C-CABA','3rd Choice-ABA', 'C3AB', 'C4X' , TRUE), 
+        ('C-CABB','3rd Choice-ABB', 'C3AB', 'C4Z' , TRUE), 
+        ('C-CBAA','3rd Choice-BAA', 'C3BA', 'C4X' , TRUE), 
+        ('C-CBAB','3rd Choice-BAB', 'C3BA', 'C4Z', TRUE), 
+        ('C-CBBA','3rd Choice-BBA', 'C3BB', 'C4X' , TRUE), 
+        ('C-CBBB','3rd Choice-BBB', 'C3BB','C4Z' , TRUE),
+-- SKY SETTING
         ('S-CB','1st Choice-B', 'S1', 'S2B', FALSE), 
         ('S-CA','1st Choice-A', 'S1', 'S2A', FALSE), 
         ('S-CAA','2nd Choice-AA', 'S2A', 'S3AA' , FALSE), 

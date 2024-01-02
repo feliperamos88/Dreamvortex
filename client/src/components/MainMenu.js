@@ -7,7 +7,7 @@ import NewStory from './NewStory';
 import LoadStory from './LoadStory';
 
 const MainMenu = ({ clickAudio }) => {
-  const [login, setLogin] = useState(false);
+  const [login, setLogin] = useState();
   const {
     currentPlayer,
     setCurrentPlayer,
@@ -29,11 +29,11 @@ const MainMenu = ({ clickAudio }) => {
 
   return (
     <>
-      <div className="menuOptions mt-5">
-        {!login && (
+      <div className="menuOptions">
+        {!currentPlayer && !login && (
           <>
             <div
-              className="set-id-button p-4"
+              className="set-id-button mt-5 p-4"
               onClick={() => setLogin('pending')}
             >
               {' '}
@@ -41,45 +41,39 @@ const MainMenu = ({ clickAudio }) => {
             </div>
           </>
         )}
-        {login === 'pending' &&
-          !newGame &&
-          login === 'pending' &&
-          !loadGame && (
-            <PlayerForm setLogin={setLogin} clickAudio={clickAudio} />
-          )}
-        {login === 'concluded' &&
-          !newGame &&
-          login === 'concluded' &&
-          !loadGame && (
-            <div className={menuAnimationClass}>
-              <Button
-                addClass="menu-button"
-                action={() => {
-                  clickAudio.current.play();
-                  setNewGame(true);
-                  setMenuAnimationClass('regular-menu-container-normal');
-                }}
-                text="New Game"
-              />
-              <Button
-                addClass="menu-button"
-                text="Load Game"
-                action={() => {
-                  clickAudio.current.play();
-                  setLoadGame(true);
-                  setMenuAnimationClass('regular-menu-container-normal');
-                }}
-              />
-              <Button
-                addClass="menu-button"
-                text="Credits"
-                action={() => {
-                  clickAudio.current.play();
-                  setMenuAnimationClass('regular-menu-container-normal');
-                }}
-              />
-            </div>
-          )}
+        {login === 'pending' && !newGame && !loadGame && (
+          <PlayerForm setLogin={setLogin} clickAudio={clickAudio} />
+        )}
+        {currentPlayer && !newGame && !loadGame && (
+          <div className={`mt-5 ${menuAnimationClass}`}>
+            <Button
+              addClass="menu-button"
+              action={() => {
+                clickAudio.current.play();
+                setNewGame(true);
+                setMenuAnimationClass('regular-menu-container-normal');
+              }}
+              text="New Game"
+            />
+            <Button
+              addClass="menu-button"
+              text="Load Game"
+              action={() => {
+                clickAudio.current.play();
+                setLoadGame(true);
+                setMenuAnimationClass('regular-menu-container-normal');
+              }}
+            />
+            <Button
+              addClass="menu-button"
+              text="Credits"
+              action={() => {
+                clickAudio.current.play();
+                setMenuAnimationClass('regular-menu-container-normal');
+              }}
+            />
+          </div>
+        )}
         {newGame && !loadGame && (
           <NewStory setNewGame={setNewGame} newGame={newGame} />
         )}

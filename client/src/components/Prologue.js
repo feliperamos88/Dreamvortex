@@ -1,18 +1,28 @@
 import { useState, useEffect, useRef, useContext } from 'react';
 import { GameAPI } from '../helpers/GameAPI';
 import { currentPlayerContext } from '../helpers/GameContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate, useLocation } from 'react-router-dom';
 import Button from './Button';
 
 import Typewriter from 'typewriter-effect';
 
 const Prologue = () => {
-  const { currentPlayer, setCurrentPlayer, currentGameID, setCurrentGameID } =
-    useContext(currentPlayerContext);
+  const {
+    currentPlayer,
+    setCurrentPlayer,
+    currentGameID,
+    setCurrentGameID,
+    skipBTN,
+    setSkipBTN,
+    gameHandler,
+    setGameHandler,
+  } = useContext(currentPlayerContext);
   const [settings, setSettings] = useState('');
   const [stage, setStage] = useState('prologue');
   const [display, setDisplay] = useState('');
+  // const [btn, setBtn] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation;
 
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
@@ -35,6 +45,17 @@ const Prologue = () => {
     }
   };
 
+  const showBTN = () => {
+    setTimeout(() => {
+      console.log(skipBTN);
+      setSkipBTN(true);
+      setGameHandler((prevState) => ({
+        ...prevState,
+        handler: actChangeHandle,
+      }));
+    }, 2000);
+  };
+
   const actChangeHandle = async () => {
     try {
       const { data } = await GameAPI.getOne('setting', settings[0].name);
@@ -54,7 +75,7 @@ const Prologue = () => {
       });
       setDisplay('menu-hidden');
       setTimeout(() => {
-        navigate('/actI', { state: { setting: data.setting.name, act: 1 } });
+        navigate('/story', { state: { setting: data.setting.name, act: 1 } });
       }, 6000);
     } catch (err) {
       console.log(err);
@@ -62,8 +83,13 @@ const Prologue = () => {
   };
 
   useEffect(() => {
+    if (settings) {
+      showBTN();
+    }
+  }, [settings]);
+
+  useEffect(() => {
     getSettings();
-    console.log(currentPlayer);
   }, [stage]);
 
   return (
@@ -116,11 +142,18 @@ const Prologue = () => {
               .start();
           }}
         /> */}
-          <Button
-            addClass="menu-button"
-            text="Next Stage"
-            action={() => actChangeHandle()}
-          />
+          {/* {btn && (
+            <div className="mt-5 d-flex justify-content-end me-5">
+              <Button
+                addClass="menu-button"
+                text="Skip intro"
+                action={() => {
+                  actChangeHandle();
+                  setBtn(false);
+                }}
+              />
+            </div>
+          )} */}
         </div>
       </div>
     </>

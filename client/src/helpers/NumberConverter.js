@@ -1,6 +1,5 @@
 const NumberConverter = (num) => {
   const numObj = {
-    0: 'The Beginning',
     1: 'Act I',
     2: 'Act II',
     3: 'Act III',

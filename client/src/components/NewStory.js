@@ -38,15 +38,14 @@ const NewStory = ({ newGame, setNewGame }) => {
   };
 
   const createGameSlot = async () => {
-    const { data } = await loadPlayer(currentPlayer.player_id);
-    setCurrentPlayer(data.player);
     if (currentPlayer.saved_game.length > 2) {
       setAlertMSG(memoryFullMSG);
     } else {
       setAlertMSG(creatingGameMSG);
       try {
         await createNewGame();
-
+        const { data } = await loadPlayer(currentPlayer.player_id);
+        setCurrentPlayer(data.player);
         setMenuDisplay('menu-hidden');
         setTimeout(() => {
           navigate('/prologue');
