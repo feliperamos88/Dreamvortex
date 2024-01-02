@@ -8,10 +8,6 @@ import NumberConverter from '../helpers/NumberConverter';
 import moment from 'moment';
 
 const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG }) => {
-  const now = moment('2024-01-01 21:33:22.935-05').format('YYYY-MM-DD HH:mm');
-
-  console.log(now);
-
   const navigate = useNavigate();
   const {
     currentPlayer,
@@ -21,23 +17,35 @@ const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG }) => {
     currentGameID,
     setCurrentGameID,
   } = useContext(currentPlayerContext);
-  const [slotClass, setSlotClass] = useState('testclass');
+  const [blockClass, setBlockClass] = useState('');
+
+  const parseDateHandler = (date) => {
+    const stringDate = moment(`${date}`).format('YYYY-MM-DD HH:mm');
+    const splitDate = stringDate.split(' ');
+    return `${splitDate[0]} at ${splitDate[1]} `;
+  };
 
   const loadGameHandler = (id, setting, act, dialogue_id) => {
-    setCurrentGameID(id);
-    setMenuDisplay('menu-hidden');
-    setTimeout(() => {
-      const slotDiv = document.getElementById(id);
-      slotDiv.classList.add('loading-file');
-    }, 0);
-    if (dialogue_id === 'P0') {
+    try {
+      setCurrentGameID(id);
+      setMenuDisplay('menu-hidden');
       setTimeout(() => {
-        navigate('/prologue');
-      }, 3000);
-    } else {
-      setTimeout(() => {
-        navigate('/story', { state: { setting, act } });
-      }, 3000);
+        const slotDiv = document.getElementById(id);
+        slotDiv.classList.add('loading-file');
+      }, 0);
+      setBlockClass('block-files');
+      if (dialogue_id === 'P0') {
+        setTimeout(() => {
+          navigate('/prologue');
+        }, 3000);
+      } else {
+        setTimeout(() => {
+          navigate('/story', { state: { setting, act } });
+        }, 3000);
+      }
+    } catch (err) {
+      setBlockClass('');
+      setAlertMSG();
     }
   };
 
@@ -58,7 +66,9 @@ const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG }) => {
     }
   };
   return (
-    <div className="container saved-file-container col-10 col-md-5 mb-3">
+    <div
+      className={`container saved-file-container col-10 col-md-5 mb-3 ${blockClass}`}
+    >
       {saveFiles.map((file) => {
         return (
           <div
@@ -72,7 +82,9 @@ const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG }) => {
                 : `${NumberConverter(file.act)}:
               ${file.setting.toUpperCase()}`}
             </h5>
-            <h5>{moment(`${file.updatedAt}`).format('YYYY-MM-DD HH:mm')}</h5>
+            <h5 style={{ fontSize: '1em' }}>
+              LAST SAVE: {parseDateHandler(file.updatedAt)}
+            </h5>
             <div className="d-flex justify-content-evenly">
               <Button
                 text="Load game"
