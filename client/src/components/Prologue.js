@@ -6,6 +6,26 @@ import Button from './Button';
 
 import Typewriter from 'typewriter-effect';
 
+const prologueText = {
+  p1: 'Greetings, dreamer...  ',
+
+  p2: 'lost in the tapestry of your own subconscious',
+
+  p3: 'Within this ethereal realm, you awaken to the enchanting glow of a mysterious path, a beacon promising release from the labyrinths of your thoughts',
+
+  p4: 'This dream world holds you captive, entwining reality with the extraordinary. The shimmering brilliance of the path invites you to break free from the binds of your own mind',
+
+  p5: 'A journey lies ahead, where the surreal and the unknown intertwine',
+
+  p6: 'As you step closer to the luminous pathway, consider the road that unfolds before you. It is through this path that your destiny is revealed, a passage leading to the awakening beyond the illusions of the dream',
+
+  p7: 'Embrace the enigma that surrounds you, for through the path lies the key to liberation from the confines of your own dreamscape...',
+
+  p8: 'Are you ready?',
+};
+
+// You can access each choice using prologueChoices.choice1, prologueChoices.choice2, etc.
+
 const Prologue = () => {
   const {
     currentPlayer,
@@ -20,7 +40,8 @@ const Prologue = () => {
   const [settings, setSettings] = useState('');
   const [stage, setStage] = useState('prologue');
   const [display, setDisplay] = useState('');
-  // const [btn, setBtn] = useState(true);
+  const [continueBtn, setContinueBtn] = useState(false);
+  const [skip, setSkip] = useState(false);
   const navigate = useNavigate();
   const location = useLocation;
 
@@ -51,13 +72,17 @@ const Prologue = () => {
       setSkipBTN(true);
       setGameHandler((prevState) => ({
         ...prevState,
-        handler: actChangeHandle,
+        handler: () => {
+          setContinueBtn(true);
+          setSkip(true);
+        },
       }));
     }, 2000);
   };
 
   const actChangeHandle = async () => {
     try {
+      setContinueBtn(false);
       const { data } = await GameAPI.getOne('setting', settings[0].name);
       await GameAPI.create('progress', {
         setting_name: stage,
@@ -76,7 +101,7 @@ const Prologue = () => {
       setDisplay('menu-hidden');
       setTimeout(() => {
         navigate('/story', { state: { setting: data.setting.name, act: 1 } });
-      }, 6000);
+      }, 4000);
     } catch (err) {
       console.log(err);
     }
@@ -94,7 +119,7 @@ const Prologue = () => {
 
   return (
     <>
-      <div className={display}>
+      <div className={`prologue-main ${display}`}>
         <div className="prologue-container">
           <div className="animation-container">
             <div className="portal-animation"></div>
@@ -112,48 +137,78 @@ const Prologue = () => {
             </div>
           </div>
         </div>
-        <div className="text-center">
-          {/* <Typewriter
-          options={{
-            strings: [
-              'Hello world.',
-              'It is me',
-              'The one that lives in your dreams.',
-            ],
-            autoStart: true,
-            pauseFor: 2000,
-            deleteAll: false,
-          }}
-        /> */}
-          {/* <Typewriter
-          onInit={(typewriter) => {
-            typewriter
-              .pauseFor(5000)
-              .typeString('Hello World!')
-              .callFunction(() => {
-                console.log('String typed out!');
-              })
-              .pauseFor(1500)
-              .typeString('It is me! The one that lives in your dreams!')
-              .deleteAll(0.1)
-              .callFunction(() => {
-                console.log('All strings were deleted');
-              })
-              .start();
-          }}
-        /> */}
-          {/* {btn && (
-            <div className="mt-5 d-flex justify-content-end me-5">
-              <Button
-                addClass="menu-button"
-                text="Skip intro"
-                action={() => {
-                  actChangeHandle();
-                  setBtn(false);
+        <div className="text-center d-flex flex-column justify-content-center prologue-text">
+          <div className="container col-8">
+            {!skip && (
+              <Typewriter
+                onInit={(typewriter) => {
+                  typewriter
+                    .changeDelay(60)
+                    .pauseFor(6000)
+                    .typeString(prologueText.p1)
+                    .pauseFor(3000)
+                    .callFunction((e) => {
+                      e.elements.wrapper.innerHTML = '';
+                    })
+                    .typeString(prologueText.p2)
+                    .pauseFor(5000)
+                    .callFunction((e) => {
+                      e.elements.wrapper.innerHTML = '';
+                    })
+                    .typeString(prologueText.p3)
+                    .pauseFor(5000)
+                    .callFunction((e) => {
+                      e.elements.wrapper.innerHTML = '';
+                    })
+                    .typeString(prologueText.p4)
+                    .pauseFor(5000)
+                    .callFunction((e) => {
+                      e.elements.wrapper.innerHTML = '';
+                    })
+                    .typeString(prologueText.p5)
+                    .pauseFor(3000)
+                    .callFunction((e) => {
+                      e.elements.wrapper.innerHTML = '';
+                    })
+                    .typeString(prologueText.p6)
+                    .pauseFor(5000)
+                    .callFunction((e) => {
+                      e.elements.wrapper.innerHTML = '';
+                    })
+                    .typeString(prologueText.p7)
+                    .pauseFor(3000)
+                    .callFunction((e) => {
+                      e.elements.wrapper.innerHTML = '';
+                    })
+                    .callFunction((e) => {
+                      setSkipBTN(false);
+                    })
+                    .changeDelay(120)
+                    .typeString(prologueText.p8)
+                    .callFunction((e) => {
+                      setContinueBtn(true);
+                    })
+                    .callFunction(() => {})
+
+                    .start();
                 }}
               />
+            )}
+            {skip && (
+              <div>
+                <span>Are you ready?</span>
+              </div>
+            )}
+          </div>
+          {continueBtn === true && (
+            <div className="mt-5">
+              <Button
+                text="I am ready"
+                action={() => actChangeHandle()}
+                addClass="set-id-button p-3"
+              />
             </div>
-          )} */}
+          )}
         </div>
       </div>
     </>

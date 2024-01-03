@@ -37,6 +37,8 @@ const NewStory = ({ newGame, setNewGame }) => {
     console.log(data.game.id);
   };
 
+  console.log(currentPlayer);
+
   const createGameSlot = async () => {
     if (currentPlayer.saved_game.length > 2) {
       setAlertMSG(memoryFullMSG);

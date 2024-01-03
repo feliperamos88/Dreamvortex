@@ -25,7 +25,7 @@ import Progress from './models/progress.js';
 //   console.log(progress);
 // };
 
-// await sequelize.sync({ force: true });
+await sequelize.sync({ alter: true });
 
 app.listen(3001, () => {
   console.log('Up an running!');

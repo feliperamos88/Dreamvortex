@@ -6,7 +6,7 @@ import SaveFile from './SaveFile';
 
 import { v4 as uuidv4 } from 'uuid';
 
-const LoadStory = ({ loadGame, setLoadGame }) => {
+const LoadStory = ({ loadGame, setLoadGame, clickAudio }) => {
   const [alertMSG, setAlertMSG] = useState();
   const [saveFiles, setSaveFiles] = useState(false);
   const [loadSuccess, setLoadSucess] = useState('superfalse');
@@ -86,6 +86,7 @@ const LoadStory = ({ loadGame, setLoadGame }) => {
             setSaveFiles={setSaveFiles}
             setAlertMSG={() => setAlertMSG(failureMSG)}
             key={uuidv4()}
+            clickAudio={clickAudio}
           />
         )}
         <div className="container game-slot-container col-10 col-md-5">

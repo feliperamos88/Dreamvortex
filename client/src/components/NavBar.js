@@ -118,7 +118,7 @@ const NavBar = () => {
         </div>
       </div>
       <Outlet />
-      <div className="skip-button-container container">
+      <div className="skip-button-container container-fluid">
         {skipBTN && (
           <Button
             text={gameHandler.name}

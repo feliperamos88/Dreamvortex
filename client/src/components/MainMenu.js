@@ -49,7 +49,6 @@ const MainMenu = ({ clickAudio }) => {
             <Button
               addClass="menu-button"
               action={() => {
-                clickAudio.current.play();
                 setNewGame(true);
                 setMenuAnimationClass('regular-menu-container-normal');
               }}
@@ -59,7 +58,6 @@ const MainMenu = ({ clickAudio }) => {
               addClass="menu-button"
               text="Load Game"
               action={() => {
-                clickAudio.current.play();
                 setLoadGame(true);
                 setMenuAnimationClass('regular-menu-container-normal');
               }}
@@ -68,7 +66,6 @@ const MainMenu = ({ clickAudio }) => {
               addClass="menu-button"
               text="Credits"
               action={() => {
-                clickAudio.current.play();
                 setMenuAnimationClass('regular-menu-container-normal');
               }}
             />
@@ -79,7 +76,11 @@ const MainMenu = ({ clickAudio }) => {
         )}
       </div>
       {!newGame && loadGame && (
-        <LoadStory setLoadGame={setLoadGame} loadGame={loadGame} />
+        <LoadStory
+          setLoadGame={setLoadGame}
+          loadGame={loadGame}
+          clickAudio={clickAudio}
+        />
       )}
     </>
   );

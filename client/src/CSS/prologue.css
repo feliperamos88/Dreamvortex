@@ -9,11 +9,19 @@
   margin-bottom: 100px;
 } */
 
+.prologue-main {
+  padding-bottom: 0;
+}
+
+.prologue-text {
+  margin-top: -5dvh;
+}
+
 .prologue-container {
   display: flex;
   justify-content: center;
   transform: scale(0.7);
-  margin-top: -150px;
+  margin-top: -25dvh;
 }
 
 .animation-container {

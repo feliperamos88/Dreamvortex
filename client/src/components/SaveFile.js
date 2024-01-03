@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import NumberConverter from '../helpers/NumberConverter';
 import moment from 'moment';
 
-const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG }) => {
+const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG, clickAudio }) => {
   const navigate = useNavigate();
   const {
     currentPlayer,
@@ -88,14 +88,15 @@ const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG }) => {
             <div className="d-flex justify-content-evenly">
               <Button
                 text="Load game"
-                action={() =>
+                action={() => {
                   loadGameHandler(
                     file.id,
                     file.setting,
                     file.act,
                     file.dialogue_id
-                  )
-                }
+                  );
+                  clickAudio.current.play();
+                }}
               />
               <Button text="Delete" action={() => deleteFileHandler(file.id)} />
             </div>

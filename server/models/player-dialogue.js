@@ -19,11 +19,11 @@ const PlayerDialogue = sequelize.define('player-dialogue', {
 
 Player.hasMany(PlayerDialogue, {
   as: 'saved_game',
-  foreignKey: { name: 'player_id', allowNull: false, primaryKey: false },
+  foreignKey: { name: 'player_id' },
 });
 PlayerDialogue.belongsTo(Player, {
   as: 'player',
-  foreignKey: { name: 'player_id', allowNull: false, primaryKey: false },
+  foreignKey: { name: 'player_id' },
 });
 
 // Dialogue.hasMany(PlayerDialogue, {
@@ -35,17 +35,24 @@ PlayerDialogue.belongsTo(Player, {
 //   foreignKey: { name: 'dialogue_id', allowNull: false, primaryKey: false },
 // });
 
-Player.belongsToMany(Dialogue, {
-  through: PlayerDialogue,
-
+Player.belongsToMany(
+  Dialogue,
+  {
+    through: { model: PlayerDialogue, unique: false },
+    foreignKey: 'player_id',
+  }
   // as: 'dialogue',
-  foreignKey: 'player_id',
-});
-Dialogue.belongsToMany(Player, {
-  through: PlayerDialogue,
+);
+Dialogue.belongsToMany(
+  Player,
+  {
+    through: { model: PlayerDialogue, unique: false },
+    foreignKey: 'dialogue_id',
+  }
+  // through: PlayerDialogue,
+  // unique: false,
   // as: 'player',
-  foreignKey: 'dialogue_id',
-});
+);
 
 // Player.belongsToMany(Dialogue, {
 //   as: 'saved_game',
