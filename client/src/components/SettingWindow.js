@@ -28,8 +28,8 @@ const SettingWindow = ({ currentSetting, currentText, makeChoiceHandler }) => {
           ></div>
         </div>
       </div>
-      <div className="text-center container col-10 mt-3">
-        <div style={{ fontSize: '20px' }}>
+      <div className="container col-10 mt-3">
+        <div style={{ fontSize: '20px', textAlign: 'center' }}>
           <Typewriter
             options={{
               strings: currentText.text,
@@ -43,7 +43,7 @@ const SettingWindow = ({ currentSetting, currentText, makeChoiceHandler }) => {
           <div className="choices-container container mt-5 mb-0">
             {currentText &&
               currentText.choices.map((value) => (
-                <div className="mt-3 container">
+                <div className="mt-3 container text-start">
                   <button
                     className="game-button"
                     id={value.dialogue_id_to}
