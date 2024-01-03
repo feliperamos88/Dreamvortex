@@ -28,9 +28,12 @@ const Opening = () => {
 
   useEffect(() => {
     if (!currentPlayer) {
-      setTimeout(() => {
+      const timeout = setTimeout(() => {
         setAgree('pending');
-      }, 3000);
+      }, 1000);
+      return () => {
+        clearTimeout(timeout);
+      };
     }
   }, [currentPlayer]);
 
@@ -59,7 +62,7 @@ const Opening = () => {
   useEffect(() => {
     const initialScreen = async () => {
       setOpenTXT('A COOL COMPANY NAME WILL COME HERE!');
-      setTimeout(() => {
+      const timeout1 = setTimeout(() => {
         songAudio.current.play();
         setSkipBTN(true);
         setGameHandler((prevState) => ({
@@ -76,13 +79,18 @@ const Opening = () => {
         setImage(true);
       }, 7000);
 
-      setTimeout(() => {
+      const timeout2 = setTimeout(() => {
         setTitle(true);
       }, 20000);
-      setTimeout(() => {
+      const timeout3 = setTimeout(() => {
         setSkipBTN(false);
         setMenu(true);
       }, 25000);
+      return () => {
+        clearTimeout(timeout1);
+        clearTimeout(timeout2);
+        clearTimeout(timeout3);
+      };
     };
     if (agree === 'accepted') {
       initialScreen();
@@ -114,9 +122,7 @@ const Opening = () => {
 
           {image && (
             <div className="opening-image-container">
-              {title && (
-                <div className="game-title">A title will come here!</div>
-              )}
+              {title && <div className="game-title">SURREAL ENIGMA</div>}
               <div
                 className="image-background"
                 style={{
@@ -127,47 +133,8 @@ const Opening = () => {
           )}
 
           {menu && <MainMenu clickAudio={clickAudio} />}
-
-          {/* {menu && ( 
-          <div className="menuOptions mt-5">
-            <div>
-              <Button
-                addClass="menu-button"
-                action={() => {
-                  clickAudio.current.play();
-                }}
-                text="New Game"
-              />
-              <Button
-                addClass="menu-button"
-                text="Load Game"
-                action={() => {
-                  clickAudio.current.play();
-                }}
-              />
-              <Button
-                addClass="menu-button"
-                text="Credits"
-                action={() => {
-                  clickAudio.current.play();
-                }}
-              />
-            </div>
-          </div>
-        )} */}
         </div>
       </div>
-      {/* <div className="skip-button-container container">
-        {skipBTN && (
-          <Button
-            text="Skip Intro"
-            action={() => {
-              skipOpeningHandler();
-              setSkipBTN(false);
-            }}
-          />
-        )}
-      </div> */}
     </>
   );
 };

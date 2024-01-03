@@ -33,12 +33,13 @@
   }
 }
 
-.setting-text {
+.choices-container {
   opacity: 0;
   display: flexbox;
-  justify-content: center;
-  /* animation: Show_Text 3s ease 0s forwards; */
-  animation: Show-Display 2s ease 0s forwards;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  animation: Show-Display 2s ease 3s forwards;
 }
 
 @keyframes Show-Display {
