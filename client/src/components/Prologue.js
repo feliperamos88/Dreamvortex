@@ -124,16 +124,8 @@ const Prologue = () => {
           <div className="animation-container">
             <div className="portal-animation"></div>
             <div className="d-flex justify-content-center shadow-container">
-              <div className="div-shadow " id="shadow-left">
-                {/* <div className="portal-animation-left"></div>
-              <div className="portal-animation-center"></div>
-              <div className="portal-animation-right"></div> */}
-              </div>
-              <div className="div-shadow" id="shadow-right">
-                {/* <div className="portal-animation-left"></div>
-              <div className="portal-animation-center"></div>
-              <div className="portal-animation-right"></div> */}
-              </div>
+              <div className="div-shadow " id="shadow-left"></div>
+              <div className="div-shadow" id="shadow-right"></div>
             </div>
           </div>
         </div>

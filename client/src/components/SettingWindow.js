@@ -27,15 +27,8 @@ const SettingWindow = ({ currentSetting, currentText, makeChoiceHandler }) => {
             }}
           ></div>
         </div>
-        {/* <div className="col-10 col-md-6">
-          <img
-            src={currentSetting.background_pic}
-            key={uuidv4()}
-            className="img-fluid"
-          ></img>
-        </div> */}
       </div>
-      <div className="text-center">
+      <div className="text-center container col-10 mt-3">
         <div style={{ fontSize: '20px' }}>
           <Typewriter
             options={{
@@ -47,17 +40,19 @@ const SettingWindow = ({ currentSetting, currentText, makeChoiceHandler }) => {
           />
         </div>
         {settingChange && (
-          <div className="setting-text mt-3 mb-0">
+          <div className="choices-container container mt-5 mb-0">
             {currentText &&
               currentText.choices.map((value) => (
-                <button
-                  className="game-button"
-                  id={value.dialogue_id_to}
-                  onClick={makeChoiceHandler}
-                  key={value.dialogue_id_to}
-                >
-                  {value.choice_text}
-                </button>
+                <div className="mt-3 container">
+                  <button
+                    className="game-button"
+                    id={value.dialogue_id_to}
+                    onClick={makeChoiceHandler}
+                    key={value.dialogue_id_to}
+                  >
+                    {value.choice_text}
+                  </button>
+                </div>
               ))}
           </div>
         )}

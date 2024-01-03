@@ -124,7 +124,7 @@ const MainWindow = () => {
         />
       </div>
       {finalText && (
-        <div className="container text-center">
+        <div className="container text-center choices-container mt-5">
           <Button
             action={() => {
               actChangeHandle();

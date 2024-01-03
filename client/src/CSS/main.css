@@ -35,7 +35,7 @@
   position: absolute;
   animation: fadeIn 5s;
   z-index: 2;
-  margin: 10% 25% 0 36%;
+  margin: 13% 25% 0 42%;
   font-size: 1.5em;
   font-weight: 900;
   text-shadow: 3px 3px black;
@@ -243,4 +243,8 @@
   position: absolute;
   bottom: 0;
   margin-bottom: 3dvh;
+}
+
+.Typewriter__cursor {
+  display: none;
 }
