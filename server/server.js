@@ -11,6 +11,6 @@ import { sequelize } from './config/config.js';
 
 // await sequelize.sync();
 
-app.listen(3001, () => {
-  console.log('Up an running!');
+app.listen(process.env.PORT, () => {
+  // console.log('Up an running!');
 });
