@@ -16,6 +16,7 @@ const MainWindow = () => {
   const [currentSetting, setCurrentSetting] = useState('');
   const [display, setDisplay] = useState('');
   const [actVisible, setActVisible] = useState(false);
+  const navigate = useNavigate();
 
   const { currentPlayer, setCurrentPlayer, currentGameID, setCurrentGameID } =
     useContext(currentPlayerContext);
@@ -42,11 +43,15 @@ const MainWindow = () => {
       );
       const unfinishedSettings = shuffleArray(acts);
 
-      if (unfinishedSettings.length < 1) {
-        console.log('end of the line!');
-      } else {
-        setStage(unfinishedSettings[0].name);
-      }
+      // if (unfinishedSettings.length < 1) {
+      //   console.log('final');
+      //   setDisplay('setting-hidden');
+      //   setTimeout(() => {
+      //     navigate('/finale');
+      //   }, 2000);
+      // } else {
+      setStage(unfinishedSettings[0].name);
+      // }
     } catch (err) {
       console.log(err);
     }
@@ -83,15 +88,24 @@ const MainWindow = () => {
     });
     setCurrentText(newText);
   };
+  console.log(curretAct);
 
   const actChangeHandle = async () => {
     setCurrentAct((prev) => prev + 1);
+    console.log(curretAct);
     try {
-      const concludedSetting = await GameAPI.create('progress', {
-        setting_name: stage,
-        saved_game_id: currentGameID,
-      });
-      getSettings();
+      if (curretAct > 5) {
+        setDisplay('setting-hidden');
+        setTimeout(() => {
+          navigate('/finale');
+        }, 2000);
+      } else {
+        const concludedSetting = await GameAPI.create('progress', {
+          setting_name: stage,
+          saved_game_id: currentGameID,
+        });
+        getSettings();
+      }
     } catch (err) {
       console.log(err);
     }

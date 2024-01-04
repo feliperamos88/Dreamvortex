@@ -11,6 +11,7 @@ const LoadStory = ({ loadGame, setLoadGame, clickAudio }) => {
   const [saveFiles, setSaveFiles] = useState(false);
   const [loadSuccess, setLoadSucess] = useState('superfalse');
   const [slotsNumber, setSlotsNumber] = useState(false);
+  const [blockClass, setBlockClass] = useState('');
   const navigate = useNavigate();
   const {
     currentPlayer,
@@ -57,7 +58,6 @@ const LoadStory = ({ loadGame, setLoadGame, clickAudio }) => {
   useEffect(() => {
     if (saveFiles) {
       removeSlots();
-      console.log(slotsNumber);
     }
   }, [saveFiles]);
 
@@ -79,7 +79,7 @@ const LoadStory = ({ loadGame, setLoadGame, clickAudio }) => {
           ? "You've reached your maximum (3) of save game slots"
           : ''}
       </h4>{' '}
-      <div className="mt-3">
+      <div className={`mt-3 ${blockClass}`}>
         {saveFiles && (
           <SaveFile
             saveFiles={saveFiles}
@@ -87,6 +87,7 @@ const LoadStory = ({ loadGame, setLoadGame, clickAudio }) => {
             setAlertMSG={() => setAlertMSG(failureMSG)}
             key={uuidv4()}
             clickAudio={clickAudio}
+            setBlockClass={setBlockClass}
           />
         )}
         <div className="container game-slot-container col-10 col-md-5">
@@ -122,7 +123,9 @@ const LoadStory = ({ loadGame, setLoadGame, clickAudio }) => {
               className="back-button p-2 "
               type="button"
               aria-label="Close"
-              onClick={() => updatePlayer(currentPlayer.player_id)}
+              onClick={() => {
+                updatePlayer(currentPlayer.player_id);
+              }}
               style={{
                 marginLeft: '2px',
                 backgroundColor: 'transparent',

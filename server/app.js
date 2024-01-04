@@ -7,12 +7,6 @@ import playerRoutes from './routes/playerRoutes.js';
 import gameRoutes from './routes/gameRoutes.js';
 import progressRoutes from './routes/progressRoutes.js';
 
-import userRouter from './routes/userRoutes.js';
-import companyRouter from './routes/companyRoutes.js';
-import jobRouter from './routes/jobRoutes.js';
-import applicationRouter from './routes/applicationRoutes.js';
-import authenticateRoutes from './routes/authenticateRoutes.js';
-
 import morgan from 'morgan';
 import { fileURLToPath } from 'url';
 import path from 'path';

@@ -7,7 +7,13 @@ import { useNavigate } from 'react-router-dom';
 import NumberConverter from '../helpers/NumberConverter';
 import moment from 'moment';
 
-const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG, clickAudio }) => {
+const SaveFile = ({
+  saveFiles,
+  setSaveFiles,
+  setAlertMSG,
+  clickAudio,
+  setBlockClass,
+}) => {
   const navigate = useNavigate();
   const {
     currentPlayer,
@@ -17,7 +23,6 @@ const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG, clickAudio }) => {
     currentGameID,
     setCurrentGameID,
   } = useContext(currentPlayerContext);
-  const [blockClass, setBlockClass] = useState('');
 
   const parseDateHandler = (date) => {
     const stringDate = moment(`${date}`).format('YYYY-MM-DD HH:mm');
@@ -26,6 +31,8 @@ const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG, clickAudio }) => {
   };
 
   const loadGameHandler = (id, setting, act, dialogue_id) => {
+    setBlockClass('block-files');
+
     try {
       setCurrentGameID(id);
       setMenuDisplay('menu-hidden');
@@ -33,7 +40,6 @@ const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG, clickAudio }) => {
         const slotDiv = document.getElementById(id);
         slotDiv.classList.add('loading-file');
       }, 0);
-      setBlockClass('block-files');
       if (dialogue_id === 'P0') {
         setTimeout(() => {
           navigate('/prologue');
@@ -65,10 +71,9 @@ const SaveFile = ({ saveFiles, setSaveFiles, setAlertMSG, clickAudio }) => {
       setAlertMSG();
     }
   };
+
   return (
-    <div
-      className={`container saved-file-container col-10 col-md-5 mb-3 ${blockClass}`}
-    >
+    <div className={`container saved-file-container col-10 col-md-5 mb-3`}>
       {saveFiles.map((file) => {
         return (
           <div

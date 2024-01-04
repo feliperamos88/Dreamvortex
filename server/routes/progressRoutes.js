@@ -1,9 +1,9 @@
 import express from 'express';
 import * as Progress from '../controller/progress.js';
-import {
-  authenticateJWT,
-  ensureLoggedIn,
-} from '../middleware/authentication.js';
+// import {
+//   authenticateJWT,
+//   ensureLoggedIn,
+// } from '../middleware/authentication.js';
 
 const router = express.Router();
 

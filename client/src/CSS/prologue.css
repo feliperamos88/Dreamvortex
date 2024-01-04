@@ -43,13 +43,22 @@
   }
 }
 
-.portal-animation {
+.portal-animation-finale {
   width: 100%;
   background-color: rgb(121, 209, 209);
   bottom: 0;
   position: relative;
   animation: portal 3s 2s forwards;
   box-shadow: 0 0 20px rgb(121, 209, 209);
+}
+
+.portal-animation {
+  width: 100%;
+  background-color: rgb(223, 39, 39);
+  bottom: 0;
+  position: relative;
+  animation: portal 3s 2s forwards;
+  box-shadow: 0 0 20px rgb(209, 121, 121);
 }
 
 @keyframes portal {
@@ -73,7 +82,15 @@
   width: 15dvw;
   height: auto;
   min-height: 10dvh;
+  background-color: rgb(224, 78, 78);
+}
 
+.div-shadow-finale {
+  opacity: 1;
+  display: flex;
+  width: 15dvw;
+  height: auto;
+  min-height: 10dvh;
   background-color: rgb(76, 134, 134);
 }
 

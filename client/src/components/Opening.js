@@ -122,7 +122,7 @@ const Opening = () => {
 
           {image && (
             <div className="opening-image-container">
-              {title && <div className="game-title">SURREAL ENIGMA</div>}
+              {title && <div className="game-title">DREAMVORTEX</div>}
               <div
                 className="image-background"
                 style={{

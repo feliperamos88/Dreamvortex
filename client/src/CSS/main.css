@@ -65,6 +65,16 @@
   opacity: 1;
 }
 
+.final-text-container {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100dvw;
+  height: 100dvh;
+  margin-top: -15dvh;
+}
+
 .deleted-file {
   opacity: 1;
   animation: Delete-File 1s ease 0.5s forwards;

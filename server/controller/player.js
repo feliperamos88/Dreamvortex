@@ -1,12 +1,8 @@
-import User from '../models/user.js';
-import Job from '../models/job.js';
-import Company from '../models/company.js';
 import Player from '../models/player.js';
 import PlayerDialogue from '../models/player-dialogue.js';
 import Dialogue from '../models/dialogue.js';
 import Progress from '../models/progress.js';
 import { UnauthorizedError, NotFoundError } from '../helpers/expressError.js';
-import { error } from 'console';
 
 export const getAll = async (req, res, next) => {
   try {

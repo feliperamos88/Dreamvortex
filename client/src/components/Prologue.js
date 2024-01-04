@@ -66,19 +66,7 @@ const Prologue = () => {
     }
   };
 
-  const showBTN = () => {
-    setTimeout(() => {
-      console.log(skipBTN);
-      setSkipBTN(true);
-      setGameHandler((prevState) => ({
-        ...prevState,
-        handler: () => {
-          setContinueBtn(true);
-          setSkip(true);
-        },
-      }));
-    }, 2000);
-  };
+  // const showBTN = () => {};
 
   const actChangeHandle = async () => {
     try {
@@ -109,7 +97,20 @@ const Prologue = () => {
 
   useEffect(() => {
     if (settings) {
-      showBTN();
+      const time = setTimeout(() => {
+        console.log(skipBTN);
+        setSkipBTN(true);
+        setGameHandler((prevState) => ({
+          ...prevState,
+          handler: () => {
+            setContinueBtn(true);
+            setSkip(true);
+          },
+        }));
+      }, 2000);
+      return () => {
+        clearTimeout(time);
+      };
     }
   }, [settings]);
 

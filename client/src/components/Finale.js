@@ -1,27 +1,26 @@
 import { useState, useEffect, useRef, useContext } from 'react';
-import { GameAPI } from '../helpers/GameAPI';
+
 import { currentPlayerContext } from '../helpers/GameContext';
 import { useNavigate, Navigate, useLocation } from 'react-router-dom';
-import Button from './Button';
 
 import Typewriter from 'typewriter-effect';
 
-const prologueText = {
-  p1: 'Greetings, dreamer...  ',
+const finaleText = {
+  f1: '...dreamer',
 
-  p2: 'lost in the tapestry of your own subconscious',
+  f2: 'in the tangled weave of reality and fantasy, your odyssey nears its zenith',
 
-  p3: 'Within this ethereal realm, you awaken to the enchanting glow of a mysterious path, a beacon promising release from the labyrinths of your thoughts',
+  f3: 'Within this ethereal realm, you awaken to the enchanting glow of a mysterious path, a beacon promising release from the labyrinths of your thoughts',
 
-  p4: 'This dream world holds you captive, entwining reality with the extraordinary. The shimmering brilliance of the path invites you to break free from the binds of your own mind',
+  f4: "A siren's call promising liberation from the shackles of your own mind...",
 
-  p5: 'A journey lies ahead, where the surreal and the unknown intertwine',
+  f5: 'The end is a prelude to cryptic rebirth. Shadows conceal truths, and spectral realms hold keys to unlocking mysteries lingering in your subconscious recesses',
 
-  p6: 'As you step closer to the luminous pathway, consider the road that unfolds before you. It is through this path that your destiny is revealed, a passage leading to the awakening beyond the illusions of the dream',
+  f6: 'As the enigma unravels, a pivotal decision beckons. Will you transcend the confines of your dreams? The answer, veiled in shadows, entwines with your spectral narrative.',
 
-  p7: 'Embrace the enigma that surrounds you, for through the path lies the key to liberation from the confines of your own dreamscape...',
+  f7: 'Choose wisely, for beyond its radiant facade lies the ultimate awakening – a revelation transcending haunting dreams and elusive reality',
 
-  p8: 'Are you ready?',
+  f8: 'the ethereal portal beckons your fateful decision...',
 };
 
 const Finale = () => {
@@ -36,171 +35,121 @@ const Finale = () => {
     setGameHandler,
   } = useContext(currentPlayerContext);
   const [settings, setSettings] = useState('');
-  const [stage, setStage] = useState('prologue');
+  const [freedom, setFreedom] = useState(false);
   const [display, setDisplay] = useState('');
-  const [continueBtn, setContinueBtn] = useState(false);
-  const [skip, setSkip] = useState(false);
+  const [endingBtn, setEndingBtn] = useState(false);
+  const [wake, setWake] = useState(false);
   const navigate = useNavigate();
   const location = useLocation;
 
-  const shuffleArray = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array;
-  };
-
-  const getSettings = async () => {
-    try {
-      const { data } = await GameAPI.getAll('setting');
-
-      const settingsArray = shuffleArray(data.settings);
-      setSettings(settingsArray);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const showBTN = () => {
-    setTimeout(() => {
-      console.log(skipBTN);
-      setSkipBTN(true);
-      setGameHandler((prevState) => ({
-        ...prevState,
-        handler: () => {
-          setContinueBtn(true);
-          setSkip(true);
-        },
-      }));
-    }, 2000);
-  };
-
-  const actChangeHandle = async () => {
-    try {
-      setContinueBtn(false);
-      const { data } = await GameAPI.getOne('setting', settings[0].name);
-      await GameAPI.create('progress', {
-        setting_name: stage,
-        saved_game_id: currentGameID,
-      });
-      const initial_setting = data.setting.dialogues.find(
-        (value) => value.opening_text
-      );
-
-      console.log(initial_setting);
-      await GameAPI.update('gameslot', currentGameID, {
-        setting: data.setting.name,
-        dialogue_id: initial_setting.id,
-        // act: 1,
-      });
-      setDisplay('menu-hidden');
-      setTimeout(() => {
-        navigate('/story', { state: { setting: data.setting.name, act: 1 } });
-      }, 4000);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    if (settings) {
-      showBTN();
-    }
-  }, [settings]);
-
-  useEffect(() => {
-    getSettings();
-  }, [stage]);
-
   return (
     <>
-      <div className={`prologue-main ${display}`}>
-        <div className="prologue-container">
-          <div className="animation-container">
-            <div className="portal-animation"></div>
-            <div className="d-flex justify-content-center shadow-container">
-              <div className="div-shadow " id="shadow-left"></div>
-              <div className="div-shadow" id="shadow-right"></div>
+      {freedom && (
+        <div className="final-text-container">
+          <div>THE END</div>
+        </div>
+      )}
+      {wake && !freedom && (
+        <div className="final-text-container">
+          <Typewriter
+            onInit={(typewriter) => {
+              typewriter
+                .changeDelay(150)
+                .pauseFor(500)
+                .typeString('You are now...')
+                .pauseFor(3000)
+                .callFunction((e) => {
+                  e.elements.wrapper.innerHTML = '';
+                })
+                .pasteString('FREE')
+                .pauseFor(250)
+                .callFunction((e) => {
+                  setFreedom(true);
+                })
+
+                .start();
+            }}
+          />
+        </div>
+      )}
+
+      {!wake && (
+        <div className={`prologue-main ${display}`}>
+          <div className="prologue-container">
+            <div className="animation-container">
+              <div className="portal-animation-finale"></div>
+              <div className="d-flex justify-content-center shadow-container">
+                <div className="div-shadow-finale" id="shadow-left"></div>
+                <div className="div-shadow-finale" id="shadow-right"></div>
+              </div>
             </div>
           </div>
-        </div>
-        <div className="text-center d-flex flex-column justify-content-center prologue-text">
-          <div className="container col-8">
-            {!skip && (
+          <div className="text-center d-flex flex-column justify-content-center prologue-text">
+            <div className="container col-8">
               <Typewriter
                 onInit={(typewriter) => {
                   typewriter
                     .changeDelay(60)
                     .pauseFor(6000)
-                    .typeString(prologueText.p1)
+                    .typeString(finaleText.f1)
                     .pauseFor(3000)
                     .callFunction((e) => {
                       e.elements.wrapper.innerHTML = '';
                     })
-                    .typeString(prologueText.p2)
+                    .typeString(finaleText.f2)
                     .pauseFor(5000)
                     .callFunction((e) => {
                       e.elements.wrapper.innerHTML = '';
                     })
-                    .typeString(prologueText.p3)
+                    .typeString(finaleText.f3)
                     .pauseFor(5000)
                     .callFunction((e) => {
                       e.elements.wrapper.innerHTML = '';
                     })
-                    .typeString(prologueText.p4)
+                    .typeString(finaleText.f4)
                     .pauseFor(5000)
                     .callFunction((e) => {
                       e.elements.wrapper.innerHTML = '';
                     })
-                    .typeString(prologueText.p5)
+                    .typeString(finaleText.f5)
                     .pauseFor(3000)
                     .callFunction((e) => {
                       e.elements.wrapper.innerHTML = '';
                     })
-                    .typeString(prologueText.p6)
+                    .typeString(finaleText.f6)
                     .pauseFor(5000)
                     .callFunction((e) => {
                       e.elements.wrapper.innerHTML = '';
                     })
-                    .typeString(prologueText.p7)
+                    .typeString(finaleText.f7)
                     .pauseFor(3000)
                     .callFunction((e) => {
                       e.elements.wrapper.innerHTML = '';
                     })
-                    .callFunction((e) => {
-                      setSkipBTN(false);
-                    })
+
                     .changeDelay(120)
-                    .typeString(prologueText.p8)
+                    .typeString(finaleText.f8)
                     .callFunction((e) => {
-                      setContinueBtn(true);
+                      setEndingBtn(true);
                     })
-                    .callFunction(() => {})
 
                     .start();
                 }}
               />
-            )}
-            {skip && (
-              <div>
-                <span>Are you ready?</span>
+            </div>
+            {endingBtn && (
+              <div className="mt-5">
+                <button
+                  className="game-button set-id-button p-3"
+                  onClick={() => setWake(true)}
+                >
+                  Wake me up and set me free!
+                </button>
               </div>
             )}
           </div>
-          {continueBtn === true && (
-            <div className="mt-5">
-              <Button
-                text="I am ready"
-                action={() => actChangeHandle()}
-                addClass="set-id-button p-3"
-              />
-            </div>
-          )}
         </div>
-      </div>
+      )}
     </>
   );
 };

@@ -34,6 +34,7 @@ const NavBar = () => {
   };
 
   const returnToMenuHandler = () => {
+    setSkipBTN(false);
     setNavMSG(returnToMenuMSG);
     setCurrentGameID('');
     setTimeout(() => {
@@ -51,6 +52,8 @@ const NavBar = () => {
       showNav();
     }
   }, [currentPlayer]);
+
+  console.log(skipBTN);
 
   return (
     <>
@@ -73,7 +76,6 @@ const NavBar = () => {
                 className="log-out-button"
                 onClick={() => {
                   returnToMenuHandler();
-                  setSkipBTN(false);
                 }}
               >
                 Back to Main Menu
