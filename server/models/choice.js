@@ -1,5 +1,5 @@
 import { DataTypes, Sequelize, Model } from 'sequelize';
-import { sequelize, BCRYPT_WORK_FACTOR } from '../config/config.js';
+import { sequelize } from '../config/config.js';
 import Dialogue from './dialogue.js';
 
 const Choice = sequelize.define(

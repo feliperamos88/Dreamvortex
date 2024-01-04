@@ -9,11 +9,8 @@ import { sequelize } from './config/config.js';
 
 // await sequelize.sync({ force: true });
 
-// await sequelize.sync();
+await sequelize.sync();
 
 app.listen(3001, () => {
   console.log('Up an running!');
 });
-
-// createPlayer();
-// createPl();

@@ -1,7 +1,7 @@
 
 
 
-\connect game-db
+\connect 'postgres://owsqksbr:yCHn_Uz3c_MmTz81J3DCMUfUoYb-6kwT@castor.db.elephantsql.com/owsqksbr'
 
 
 
