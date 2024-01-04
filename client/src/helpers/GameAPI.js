@@ -55,4 +55,4 @@ class GameAPI {
 //   }
 // }
 
-export { GameAPI, Authenticate };
+export { GameAPI };
