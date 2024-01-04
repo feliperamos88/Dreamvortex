@@ -20,7 +20,7 @@ This application was developed with the support of the following tools:
 
 To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by either passing the connection parameters separately to the Sequelize constructor or by passing a single connection URI from the server directory.
 
-Sequelize will automatically create the database, but there will be no data in it. To populate the database, from the server/database directory, run:
+Sequelize will automatically create the database, but there will be no data in it. Considering that you have PostgreSQL installed on your computer, to populate the database, run the following command from the server/database directory:
 
 ```shell
 $ psql < game_seed.sql
