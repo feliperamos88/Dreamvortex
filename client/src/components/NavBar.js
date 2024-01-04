@@ -53,8 +53,6 @@ const NavBar = () => {
     }
   }, [currentPlayer]);
 
-  console.log(skipBTN);
-
   return (
     <>
       <div

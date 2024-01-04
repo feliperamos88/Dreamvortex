@@ -34,10 +34,7 @@ const NewStory = ({ newGame, setNewGame }) => {
       act: 0,
     });
     setCurrentGameID(data.game.id);
-    console.log(data.game.id);
   };
-
-  console.log(currentPlayer);
 
   const createGameSlot = async () => {
     if (currentPlayer.saved_game.length > 2) {

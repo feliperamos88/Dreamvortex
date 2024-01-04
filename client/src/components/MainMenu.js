@@ -17,16 +17,6 @@ const MainMenu = ({ clickAudio }) => {
   const [newGame, setNewGame] = useState(false);
   const [loadGame, setLoadGame] = useState(false);
 
-  // const [menu, mainMenu] = useState(false);
-
-  // setTimeout(() => setLoad(true), 14000);
-
-  // useEffect(() => {
-  //   if (login = 'concluded'){
-  //     const showMenu()
-  //   }
-  // }, [login]);
-
   return (
     <>
       <div className="menuOptions">
@@ -62,13 +52,13 @@ const MainMenu = ({ clickAudio }) => {
                 setMenuAnimationClass('regular-menu-container-normal');
               }}
             />
-            <Button
+            {/* <Button
               addClass="menu-button"
               text="Credits"
               action={() => {
                 setMenuAnimationClass('regular-menu-container-normal');
               }}
-            />
+            /> */}
           </div>
         )}
         {newGame && !loadGame && (

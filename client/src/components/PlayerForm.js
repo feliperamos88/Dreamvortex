@@ -14,8 +14,6 @@ const PlayerForm = ({ setLogin, clickAudio }) => {
   const creatingPlayerMessage = 'Creating new Player_ID';
   const loadingPlayerMessage = 'Loading Player_ID';
 
-  //   const failureMessage = 'I am sorry, but something went wrong';
-
   const { currentPlayer, setCurrentPlayer } = useContext(currentPlayerContext);
 
   const createForm = useRef();
@@ -39,10 +37,6 @@ const PlayerForm = ({ setLogin, clickAudio }) => {
     return player;
   };
 
-  //   const handleLeaveInput = (e) => {
-  //     setFormData2('');
-  //   };
-  console.log(currentPlayer);
   const closeAlert = () => {
     setSubmit(false);
     setAlertMSG();

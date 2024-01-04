@@ -36,7 +36,6 @@ const LoadStory = ({ loadGame, setLoadGame, clickAudio }) => {
       setAlertMSG(loadingGameMSG);
       const { data } = await GameAPI.getOne('player', id);
       setSaveFiles(data.player.saved_game);
-      console.log(saveFiles);
       setAlertMSG('');
     } catch (err) {
       setAlertMSG(failureMSG);

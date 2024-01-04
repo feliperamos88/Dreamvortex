@@ -24,8 +24,6 @@ const prologueText = {
   p8: 'Are you ready?',
 };
 
-// You can access each choice using prologueChoices.choice1, prologueChoices.choice2, etc.
-
 const Prologue = () => {
   const {
     currentPlayer,
@@ -66,8 +64,6 @@ const Prologue = () => {
     }
   };
 
-  // const showBTN = () => {};
-
   const actChangeHandle = async () => {
     try {
       setContinueBtn(false);
@@ -80,7 +76,6 @@ const Prologue = () => {
         (value) => value.opening_text
       );
 
-      console.log(initial_setting);
       await GameAPI.update('gameslot', currentGameID, {
         setting: data.setting.name,
         dialogue_id: initial_setting.id,
@@ -98,7 +93,6 @@ const Prologue = () => {
   useEffect(() => {
     if (settings) {
       const time = setTimeout(() => {
-        console.log(skipBTN);
         setSkipBTN(true);
         setGameHandler((prevState) => ({
           ...prevState,

@@ -88,11 +88,10 @@ const MainWindow = () => {
     });
     setCurrentText(newText);
   };
-  console.log(curretAct);
 
   const actChangeHandle = async () => {
     setCurrentAct((prev) => prev + 1);
-    console.log(curretAct);
+
     try {
       if (curretAct > 5) {
         setDisplay('setting-hidden');
