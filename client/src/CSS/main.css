@@ -18,6 +18,12 @@
   gap: 3px;
 }
 
+.icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+
 .image-background {
   height: 100%;
   width: 300%;
