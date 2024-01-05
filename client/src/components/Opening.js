@@ -123,26 +123,34 @@ const Opening = () => {
               <h1 className="">{openTXT}</h1>
               {openTXT === 'POWERED BY' && (
                 <div className="icons-container container col-2 col-md-1 mt-2">
-                  <img
-                    className="img-fluid"
-                    src="https://icons.veryicon.com/png/o/business/vscode-program-item-icon/javascript-3.png"
-                    alt="Javascript"
-                  />
-                  <img
-                    className="img-fluid"
-                    src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
-                    alt="React"
-                  ></img>
-                  <img
-                    className="img-fluid"
-                    src="https://cdn.iconscout.com/icon/free/png-256/free-node-js-1174925.png?f=webp"
-                    alt="NodeJS"
-                  ></img>
-                  <img
-                    className="img-fluid"
-                    src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"
-                    alt="PostgreSQL"
-                  ></img>
+                  <div className="col-4">
+                    <img
+                      className="img-fluid"
+                      src="https://icons.veryicon.com/png/o/business/vscode-program-item-icon/javascript-3.png"
+                      alt="Javascript"
+                    />
+                  </div>
+                  <div className="col-4">
+                    <img
+                      className="img-fluid"
+                      src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+                      alt="React"
+                    ></img>
+                  </div>
+                  <div className="col-4">
+                    <img
+                      className="img-fluid"
+                      src="https://cdn.iconscout.com/icon/free/png-256/free-node-js-1174925.png?f=webp"
+                      alt="NodeJS"
+                    ></img>
+                  </div>
+                  <div className="col-4">
+                    <img
+                      className="img-fluid"
+                      src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"
+                      alt="PostgreSQL"
+                    ></img>
+                  </div>
                 </div>
               )}
             </div>
