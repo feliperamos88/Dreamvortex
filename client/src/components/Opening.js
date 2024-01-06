@@ -122,7 +122,7 @@ const Opening = () => {
             <div>
               <h1 className="">{openTXT}</h1>
               {openTXT === 'POWERED BY' && (
-                <div className="icons-container container col-4 col-md-1 mt-2">
+                <div className="icons-container container col-4 col-md-2 mt-2">
                   <div className="col-4">
                     <img
                       className="img-fluid"

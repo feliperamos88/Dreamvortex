@@ -3,6 +3,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import { currentPlayerContext } from '../helpers/GameContext';
 import { GameAPI } from '../helpers/GameAPI';
 import Button from './Button';
+import validator from 'validator';
 
 const PlayerForm = ({ setLogin, clickAudio }) => {
   const [formData1, setFormData1] = useState('');
@@ -51,6 +52,11 @@ const PlayerForm = ({ setLogin, clickAudio }) => {
         if (formData1 === '') {
           setSubmit(true);
           setAlertMSG('Field is empty');
+        } else if (!validator.isAlphanumeric(formData1)) {
+          setSubmit(true);
+          setAlertMSG(
+            'Only letters and numbers are allowed (no spaces or symbols)'
+          );
         } else {
           setAlertMSG(creatingPlayerMessage);
           setSubmit(true);
