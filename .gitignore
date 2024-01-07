@@ -127,3 +127,8 @@ dist
 .pnp.*
 .DS_Store
 client/src/components/test.js
+server/database/original.sql
+server/controller/authenticate.js
+server/controller/authenticate.js
+server/helpers/jwtToken.js
+server/middleware/authentication.js

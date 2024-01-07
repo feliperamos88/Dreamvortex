@@ -43,15 +43,14 @@ const MainWindow = () => {
       );
       const unfinishedSettings = shuffleArray(acts);
 
-      // if (unfinishedSettings.length < 1) {
-      //   console.log('final');
-      //   setDisplay('setting-hidden');
-      //   setTimeout(() => {
-      //     navigate('/finale');
-      //   }, 2000);
-      // } else {
-      setStage(unfinishedSettings[0].name);
-      // }
+      if (unfinishedSettings.length < 1) {
+        setDisplay('setting-hidden');
+        setTimeout(() => {
+          navigate('/finale');
+        }, 2000);
+      } else {
+        setStage(unfinishedSettings[0].name);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -90,15 +89,14 @@ const MainWindow = () => {
   };
 
   const actChangeHandle = async () => {
-    setCurrentAct((prev) => prev + 1);
-
     try {
-      if (curretAct > 5) {
+      if (curretAct === 5) {
         setDisplay('setting-hidden');
         setTimeout(() => {
           navigate('/finale');
         }, 2000);
       } else {
+        setCurrentAct((prev) => prev + 1);
         const concludedSetting = await GameAPI.create('progress', {
           setting_name: stage,
           saved_game_id: currentGameID,

@@ -8,6 +8,5 @@ const Auth = () => {
 
   return <> {currentPlayer ? <Outlet /> : <Navigate to={'/'} />}</>;
 };
-// const navigate = useNavigate();
 
 export default Auth;

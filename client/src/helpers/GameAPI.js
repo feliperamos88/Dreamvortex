@@ -36,22 +36,4 @@ class GameAPI {
   }
 }
 
-// class Authenticate {
-//   static BASE_URL =
-//     process.env.REACT_APP_BASE_URL || '';
-
-//   static async register(reqBody) {
-//     const response = await axios.post(
-//       `${this.BASE_URL}/auth/register`,
-//       reqBody
-//     );
-//     return response;
-//   }
-
-//   static async login(reqBody) {
-//     const response = await axios.post(`${this.BASE_URL}/auth/login`, reqBody);
-//     return response;
-//   }
-// }
-
 export { GameAPI };
