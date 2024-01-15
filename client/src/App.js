@@ -12,14 +12,30 @@ import { v4 as uuidv4 } from 'uuid';
 function App() {
   return (
     <Routes>
-      <Route element={<PlayerContext />}>
-        <Route path="/">
-          <Route element={<NavBar />}>
-            <Route path="/" element={<Opening />} />
-            <Route element={<Auth />}>
-              <Route path="/prologue" element={<Prologue />} key={uuidv4()} />
-              <Route path="/story" element={<MainWindow />} key={uuidv4()} />
-              <Route path="/finale" element={<Finale />} key={uuidv4()} />
+      <Route element={<PlayerContext key={uuidv4()} />} key={uuidv4()}>
+        <Route path="/" key={uuidv4()}>
+          <Route element={<NavBar key={uuidv4()} />}>
+            <Route
+              path="/"
+              element={<Opening key={uuidv4()} />}
+              key={uuidv4()}
+            />
+            <Route element={<Auth key={uuidv4()} />} key={uuidv4()}>
+              <Route
+                path="/prologue"
+                element={<Prologue key={uuidv4()} />}
+                key={uuidv4()}
+              />
+              <Route
+                path="/story"
+                element={<MainWindow key={uuidv4()} />}
+                key={uuidv4()}
+              />
+              <Route
+                path="/finale"
+                element={<Finale key={uuidv4()} />}
+                key={uuidv4()}
+              />
             </Route>
           </Route>
         </Route>

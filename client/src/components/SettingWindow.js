@@ -18,18 +18,19 @@ const SettingWindow = ({ currentSetting, currentText, makeChoiceHandler }) => {
 
   return (
     <>
-      <div className="setting-container">
+      <div className="setting-container" key={uuidv4()}>
         <div className="setting-image-container" key={uuidv4()}>
           <div
             className="setting-image-background"
             style={{
               backgroundImage: `url('${currentSetting.background_pic}')`,
             }}
+            key={uuidv4()}
           ></div>
         </div>
       </div>
-      <div className="container col-10 mt-3">
-        <div style={{ fontSize: '20px', textAlign: 'center' }}>
+      <div className="container col-10 mt-3" key={uuidv4()}>
+        <div style={{ fontSize: '20px', textAlign: 'center' }} key={uuidv4()}>
           <Typewriter
             options={{
               strings: currentText.text,
@@ -40,10 +41,10 @@ const SettingWindow = ({ currentSetting, currentText, makeChoiceHandler }) => {
           />
         </div>
         {settingChange && (
-          <div className="choices-container container mt-5 mb-0">
+          <div className="choices-container container mt-5 mb-0" key={uuidv4()}>
             {currentText &&
               currentText.choices.map((value) => (
-                <div className="mt-3 container text-start">
+                <div className="mt-3 container text-start" key={uuidv4()}>
                   <button
                     className="game-button"
                     id={value.dialogue_id_to}

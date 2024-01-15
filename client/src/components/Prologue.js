@@ -91,24 +91,6 @@ const Prologue = () => {
   };
 
   useEffect(() => {
-    if (settings) {
-      const time = setTimeout(() => {
-        setSkipBTN(true);
-        setGameHandler((prevState) => ({
-          ...prevState,
-          handler: () => {
-            setContinueBtn(true);
-            setSkip(true);
-          },
-        }));
-      }, 2000);
-      return () => {
-        clearTimeout(time);
-      };
-    }
-  }, [settings]);
-
-  useEffect(() => {
     getSettings();
   }, [stage]);
 
@@ -132,6 +114,16 @@ const Prologue = () => {
                   typewriter
                     .changeDelay(60)
                     .pauseFor(6000)
+                    .callFunction((e) => {
+                      setSkipBTN(true);
+                      setGameHandler((prevState) => ({
+                        ...prevState,
+                        handler: () => {
+                          setContinueBtn(true);
+                          setSkip(true);
+                        },
+                      }));
+                    })
                     .typeString(prologueText.p1)
                     .pauseFor(3000)
                     .callFunction((e) => {
