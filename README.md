@@ -23,7 +23,7 @@ To connect to the database, you must create a [Sequelize](https://sequelize.org/
 Sequelize will automatically create the database, but there will be no data in it. Considering that you have PostgreSQL installed on your computer, to populate the database, run the following command from the server/database directory:
 
 ```shell
-$ psql < game_seed.sql
+$ psql < db_seed.sql
 ```
 
 To install all the packages on the server and client side, run the following command from the server directory:
