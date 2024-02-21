@@ -125,6 +125,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# misc
 .DS_Store
 client/src/components/test.js
 server/database/original.sql
@@ -132,3 +134,5 @@ server/controller/authenticate.js
 server/controller/authenticate.js
 server/helpers/jwtToken.js
 server/middleware/authentication.js
+.dockerignore
+Dockerfile
