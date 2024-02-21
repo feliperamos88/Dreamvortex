@@ -3,7 +3,7 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 class GameAPI {
-  static BASE_URL = 'https://dreamvortex.onrender.com/api';
+  static BASE_URL = process.env.REACT_APP_API_URL;
 
   static async getAll(endpoint) {
     const response = await axios.get(`${this.BASE_URL}/${endpoint}`, {});

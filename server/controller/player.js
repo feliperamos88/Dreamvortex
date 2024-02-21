@@ -58,22 +58,21 @@ export const create = async (req, res, next) => {
   }
 };
 
+export const deleteOne = async (req, res, next) => {
+  try {
+    const deletedSaveSlot = await Player.findByPk(req.params.id);
+    await deletedSaveSlot.destroy();
+    return res.json({ msg: 'Player Deleted' });
+  } catch (err) {
+    return next(err);
+  }
+};
+
 // export const update = async (req, res, next) => {
 //   try {
 //     const user = await User.findByPk(req.params.id);
 //     await user.update(req.body);
 //     return res.json({ User: user });
-//   } catch (err) {
-//     return next(err);
-//   }
-// };
-
-// export const deleteOne = async (req, res, next) => {
-//   try {
-//     const user = await User.findByPk(req.params.id);
-//     await user.destroy();
-//     res.clearCookie('token');
-//     return res.json({ msg: 'User deleted' });
 //   } catch (err) {
 //     return next(err);
 //   }

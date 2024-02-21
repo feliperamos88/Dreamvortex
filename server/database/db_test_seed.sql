@@ -1,7 +1,5 @@
 
-
-
-
+-- (\connect (database_url || process.env.LOCAL_DB_TEST_URL))
 
 
 

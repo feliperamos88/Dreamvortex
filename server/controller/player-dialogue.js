@@ -17,15 +17,11 @@ export const getAll = async (req, res, next) => {
 export const getOne = async (req, res, next) => {
   try {
     const game = await PlayerDialogue.findByPk(req.params.id, {
-      //   attributes: { exclude: ['password'] },
       include: {
         model: Progress,
         as: 'concluded_settings',
         attributes: ['setting_name'],
       },
-      //   include: { model: Progress },
-      //     include: { model: Company, attributes: ['name'] },
-      //     },
     });
     if (!game) {
       throw new NotFoundError('Game Slot not found!');
@@ -55,7 +51,6 @@ export const update = async (req, res, next) => {
     return res.json({ saved_game: saved_game });
   } catch (err) {
     return res.json(err);
-    // return next(err);
   }
 };
 
@@ -63,7 +58,6 @@ export const deleteOne = async (req, res, next) => {
   try {
     const deletedSaveSlot = await PlayerDialogue.findByPk(req.params.id);
     await deletedSaveSlot.destroy();
-    // res.clearCookie('token');
     return res.json({ msg: 'GameDeleted' });
   } catch (err) {
     return next(err);

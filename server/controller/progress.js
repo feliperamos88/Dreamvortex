@@ -17,12 +17,8 @@ export const getAll = async (req, res, next) => {
 export const getOne = async (req, res, next) => {
   try {
     const progress = await Progress.findByPk(req.params.id, {
-      //   attributes: { exclude: ['password'] },
       include: {
         model: PlayerDialogue,
-        // as: 'saved_game',
-        // include: { model: Progress },
-        //   include: { model: Company, attributes: ['name'] },
       },
     });
     if (progress) {
@@ -41,28 +37,6 @@ export const create = async (req, res, next) => {
       new_progress: new_progress,
     });
   } catch (err) {
-    // const error = new UnauthorizedError('This Player_ID already exists!');
     return next(err);
   }
 };
-
-// export const update = async (req, res, next) => {
-//   try {
-//     const user = await User.findByPk(req.params.id);
-//     await user.update(req.body);
-//     return res.json({ User: user });
-//   } catch (err) {
-//     return next(err);
-//   }
-// };
-
-// export const deleteOne = async (req, res, next) => {
-//   try {
-//     const user = await User.findByPk(req.params.id);
-//     await user.destroy();
-//     res.clearCookie('token');
-//     return res.json({ msg: 'User deleted' });
-//   } catch (err) {
-//     return next(err);
-//   }
-// };
