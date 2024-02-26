@@ -1,12 +1,12 @@
 
 # Dreamvortex - Text-based game
 
-- DreamVortex - Game Application App
-  - [TeckStack](#teckstack)
+- DreamVortex - Game Application 
+  - [Tech Stack](#techstack)
   - [Installation](#installation)
   - [Description](#description)
 
-## TeckStack
+## Tech Stack
 
 This application was developed with the support of the following tools:
 
