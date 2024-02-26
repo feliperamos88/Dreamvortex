@@ -1,10 +1,14 @@
 
 # Dreamvortex - Text-based game
 
-- DreamVortex - Game Application 
-  - [Tech Stack](#techstack)
-  - [Installation](#installation)
+- DreamVortex - Game Application
   - [Description](#description)
+  - [Tech Stack](#tech-stack)
+  - [Installation](#installation)
+
+## Description
+
+Dreamvortex is a text-based choice game. It involves the player making choices (via click events) that lead to different stages of the game based on their choice selections.
 
 ## Tech Stack
 
@@ -37,6 +41,4 @@ After package installation, to set the application live, run the following comma
 $ npm run start
 ```
 
-## Description
 
-Dreamvortex is a text-based choice game. It involves the player making choices (via click events) that lead to different stages of the game based on their choice selections.
