@@ -8,7 +8,21 @@
 
 ## Description
 
-Dreamvortex is a text-based choice game. It involves the player making choices (via click events) that lead to different stages of the game based on their choice selections.
+Dreamvortex: Interactive Fiction with Dynamic Choices
+
+Dive into a branching narrative where your every decision shapes your destiny. Navigate five distinct acts, each packed with unique events and consequences. Your choices ripple through the story, influencing dialogue, interactions, and even visuals.
+
+Dreamvortex is a text-based browser game that moves the player across five differente leves ('acts'). The story unfolds though texts that narrate the events to the player followed by the presentation of two choices, each one leading to a different outcome in the story. The player needs to choose which choice better suits its ambitions in the game.
+
+This is a demo version, so the storyline is limited to only five distinct acts that intertwine until the end of the game. Although each stage has its own unique set of events, the texts don't change between one game and another just because one player made a different choice from another. What breaks the game's linearity is that it randomly chooses which stage will be presented to the player next, so the order of the stages can be different every time you play.
+
+Features:
+
+- Dynamic Narrative: Your choices impact the story, creating a personalized experience.
+- Expanding Adventure: Demo showcases the core, with more acts planned for regular addition.
+- Persistent Decisions: Saved data lets you explore alternate paths and see the consequences. The data is saved on the database and accessed through a "load game" menu.
+- Secure Your Progress: Account creation and login enable progress tracking and achievement comparison (no authentication at this point)
+- Visual presentation: Images and CSS animations enhance the text-based experience.
 
 ## Tech Stack
 
@@ -17,7 +31,6 @@ This application was developed with the support of the following tools:
 - Programming languages: [JavaScript](https://www.javascript.com)
 - Libraries/Frameworks: [Express](https://expressjs.com), [React](https://react.dev)
 - Database storage and management: [PostgreSQL](https://www.postgresql.org)
-
 
 
 ## Installation
