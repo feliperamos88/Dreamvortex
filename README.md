@@ -1,7 +1,7 @@
 
 # Dreamvortex - Text-based game
 
-- Jobly - Job Application App
+- DreamVortex - Game Application App
   - [TeckStack](#teckstack)
   - [Installation](#installation)
   - [Description](#description)
