@@ -39,7 +39,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  animation: Show-Display 2s ease 1s forwards;
+  animation: Show-Display 1s ease 1s forwards;
 }
 
 @keyframes Show-Display {
