@@ -31,14 +31,15 @@ const SettingWindow = ({ currentSetting, currentText, makeChoiceHandler }) => {
       </div>
       <div className="container col-10 mt-3" key={uuidv4()}>
         <div style={{ fontSize: '20px', textAlign: 'center' }} key={uuidv4()}>
-          <Typewriter
+          {/* <Typewriter
             options={{
               strings: currentText.text,
               autoStart: true,
               delay: 20,
               pauseFor: 1000,
             }}
-          />
+          /> */}
+          {currentText.text}
         </div>
         {settingChange && (
           <div className="choices-container container mt-5 mb-0" key={uuidv4()}>

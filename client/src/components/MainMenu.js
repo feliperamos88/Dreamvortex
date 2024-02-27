@@ -52,13 +52,6 @@ const MainMenu = ({ clickAudio }) => {
                 setMenuAnimationClass('regular-menu-container-normal');
               }}
             />
-            {/* <Button
-              addClass="menu-button"
-              text="Credits"
-              action={() => {
-                setMenuAnimationClass('regular-menu-container-normal');
-              }}
-            /> */}
           </div>
         )}
         {newGame && !loadGame && (

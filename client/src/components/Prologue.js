@@ -84,7 +84,7 @@ const Prologue = () => {
       setDisplay('menu-hidden');
       setTimeout(() => {
         navigate('/story', { state: { setting: data.setting.name, act: 1 } });
-      }, 4000);
+      }, 3000);
     } catch (err) {
       console.log(err);
     }

@@ -136,3 +136,6 @@ server/helpers/jwtToken.js
 server/middleware/authentication.js
 .dockerignore
 Dockerfile
+**/Dockerfile
+*Dockerfile
+*/Dockerfile

@@ -2,8 +2,6 @@ import { useState, createContext } from 'react';
 import { Outlet } from 'react-router-dom';
 
 const currentPlayerContext = createContext();
-// const FilterHandlerContext = createContext();
-
 const PlayerContext = () => {
   const obj = {
     name: 'Skip',
