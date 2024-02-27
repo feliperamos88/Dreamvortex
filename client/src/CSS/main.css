@@ -5,23 +5,23 @@
   text-align: center;
 }
 
+.icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+
+.icons-container {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+
 .opening-image-container {
   margin-top: 1%;
   overflow: hidden;
   position: relative;
   animation: fadeIn 10s;
-}
-
-.icons-container {
-  display: flex;
-  justify-content: center;
-  gap: 3px;
-}
-
-.icons-container {
-  display: flex;
-  justify-content: center;
-  gap: 3px;
 }
 
 .image-background {
