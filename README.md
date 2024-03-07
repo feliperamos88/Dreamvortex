@@ -5,7 +5,7 @@
   - [Description](#description)
   - [Tech Stack](#tech-stack)
   - [Installation](#installation)
-  - [Endpoints](#endpoints)
+  - [Endpoints](#endpoints(GET))
 
 ## Description
 
