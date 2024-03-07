@@ -63,17 +63,18 @@ $ npm run start
 ```
 {
 	"settings": [
-		{
-			"name": "forest",
-			"background_pic": "images/settings/forest2.png",
-			"character": "hooded_figure"
-		},
-		{
-			"name": "desert",
-			"background_pic": "images/settings/desert.gif",
-			"character": "snake"
-		},
-    {...}
+			{
+				"name": "forest",
+				"background_pic": "images/settings/forest2.png",
+				"character": "hooded_figure"
+			},
+			{
+				"name": "desert",
+				"background_pic": "images/settings/desert.gif",
+				"character": "snake"
+			},
+	    		{...}
+		    ]
 }
 ```
 
