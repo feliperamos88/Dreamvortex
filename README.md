@@ -55,7 +55,7 @@ After package installation, to set the application live, run the following comma
 $ npm run start
 ```
 
-## Endpoints
+## Endpoints(GET)
 
 /setting
 ```
