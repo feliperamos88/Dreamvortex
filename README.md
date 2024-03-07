@@ -74,3 +74,40 @@ $ npm run start
     {...}
 ```
 
+/setting/id
+```
+{
+	"setting": {
+		"name": "forest",
+		"background_pic": "images/settings/forest2.png",
+		"character": "hooded_figure",
+		"dialogues": [
+			{
+				"id": "F1",
+				"text": "As the sun dips below the horizon, casting long shadows through ancient trees, you find yourself deep within a dense forest. The air is thick with an otherworldly aura, and the silence is broken only by the rustle of leaves underfoot..."",
+				"opening_text": true,
+				"ending_text": false,
+				"transition_to_setting": null,
+				"current_setting_name": "forest",
+				"choices": [
+					{
+						"id": "F-CB",
+						"choice_text": "Embark on a mystical journey deeper into the unknown forest.",
+						"final_choice": false,
+						"dialogue_id_from": "F1",
+						"dialogue_id_to": "F2B"
+					},
+					{
+						"id": "F-CA",
+						"choice_text": "Seek guidance from whispers in towering trees.",
+						"final_choice": false,
+						"dialogue_id_from": "F1",
+						"dialogue_id_to": "F2A"
+					}
+{
+				"id": "F2A",
+				"text": "You have chosen the path less traveled. The forest responds to your curiosity. Yet, challenges....",
+				]
+			},
+```
+
