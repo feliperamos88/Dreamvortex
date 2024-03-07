@@ -111,6 +111,7 @@ $ npm run start
 					]
 			},
 		]
+```
 
 /player
 ```
@@ -164,6 +165,7 @@ $ npm run start
 	}
 }
 ```
+
 /gameslot
 ```
 {
@@ -188,6 +190,7 @@ $ npm run start
 		},
   		{...}
 ```
+
 /gameslot/id
 ```
 {
