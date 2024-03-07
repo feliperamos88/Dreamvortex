@@ -72,6 +72,7 @@ $ npm run start
 			"character": "snake"
 		},
     {...}
+}
 ```
 
 /setting/id
@@ -108,9 +109,12 @@ $ npm run start
 							"id": "F2A",
 							"text": "You have chosen the path less traveled. The forest responds to your curiosity. Yet, challenges....",
 						}
+ 						{...}
 					]
 			},
+		{...}
 		]
+}
 ```
 
 /player
@@ -135,6 +139,7 @@ $ npm run start
 			},
 			{...}
 		]
+	}
 ```
 
 /player/id
@@ -192,6 +197,7 @@ $ npm run start
 			},
 	  		{...}
                      ]
+}
 ```
 
 /gameslot/id
