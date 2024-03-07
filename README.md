@@ -117,22 +117,24 @@ $ npm run start
 ```
 	{
 	"players": [
-		{
-			"player_id": "player_1",
-			"createdAt": "2024-02-28T00:51:11.445Z",
-			"updatedAt": "2024-02-28T00:51:11.445Z"
-		},
-		{
-			"player_id": "player_2",
-			"createdAt": "2024-02-28T03:00:34.478Z",
-			"updatedAt": "2024-02-28T03:00:34.478Z"
-		},
-		{
-			"player_id": "player_3",
-			"createdAt": "2024-02-29T17:39:59.389Z",
-   			...
-			
-		},	
+			{
+				"player_id": "player_1",
+				"createdAt": "2024-02-28T00:51:11.445Z",
+				"updatedAt": "2024-02-28T00:51:11.445Z"
+			},
+			{
+				"player_id": "player_2",
+				"createdAt": "2024-02-28T03:00:34.478Z",
+				"updatedAt": "2024-02-28T03:00:34.478Z"
+			},
+			{
+				"player_id": "player_3",
+				"createdAt": "2024-02-29T17:39:59.389Z",
+	   			...
+				
+			},
+			{...}
+		]
 ```
 
 /player/id
@@ -170,25 +172,26 @@ $ npm run start
 ```
 {
 	"game_slots": [
-		{
-			"id": 3,
-			"act": 2,
-			"setting": "city",
-			"createdAt": "2024-02-28T00:51:16.369Z",
-			"updatedAt": "2024-02-28T00:52:06.217Z",
-			"player_id": "player_1",
-			"dialogue_id": "C1"
-		},
-		{
-			"id": 5,
-			"act": 1,
-			"setting": "desert",
-			"createdAt": "2024-02-28T03:00:40.798Z",
-			"updatedAt": "2024-02-28T03:01:04.760Z",
-			"player_id": "player_2",
-			"dialogue_id": "D1"
-		},
-  		{...}
+			{
+				"id": 3,
+				"act": 2,
+				"setting": "city",
+				"createdAt": "2024-02-28T00:51:16.369Z",
+				"updatedAt": "2024-02-28T00:52:06.217Z",
+				"player_id": "player_1",
+				"dialogue_id": "C1"
+			},
+			{
+				"id": 5,
+				"act": 1,
+				"setting": "desert",
+				"createdAt": "2024-02-28T03:00:40.798Z",
+				"updatedAt": "2024-02-28T03:01:04.760Z",
+				"player_id": "player_2",
+				"dialogue_id": "D1"
+			},
+	  		{...}
+                     ]
 ```
 
 /gameslot/id
