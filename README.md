@@ -57,7 +57,7 @@ $ npm run start
 
 ## Endpoints
 
-###GET
+### GET
 
 /setting
 ```
