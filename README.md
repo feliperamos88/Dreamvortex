@@ -84,30 +84,132 @@ $ npm run start
 		"dialogues": [
 			{
 				"id": "F1",
-				"text": "As the sun dips below the horizon, casting long shadows through ancient trees, you find yourself deep within a dense forest. The air is thick with an otherworldly aura, and the silence is broken only by the rustle of leaves underfoot..."",
+				"text": "As the sun dips below the horizon, casting long shadows through ancient trees, you find yourself deep within a dense forest. The air is thick with an otherworldly aura, and the silence is broken only by the rustle of leaves underfoot...",
 				"opening_text": true,
 				"ending_text": false,
 				"transition_to_setting": null,
 				"current_setting_name": "forest",
 				"choices": [
+						{
+							"id": "F-CB",
+							"choice_text": "Embark on a mystical journey deeper into the unknown forest.",
+							"final_choice": false,
+							"dialogue_id_from": "F1",
+							"dialogue_id_to": "F2B"
+						},
+						{
+							"id": "F-CA",
+							"choice_text": "Seek guidance from whispers in towering trees.",
+							"final_choice": false,
+							"dialogue_id_from": "F1",
+							"dialogue_id_to": "F2A"
+						}
+						{
+							"id": "F2A",
+							"text": "You have chosen the path less traveled. The forest responds to your curiosity. Yet, challenges....",
+						}
+					]
+			},
+		]
+
+/player
+```
+	{
+	"players": [
+		{
+			"player_id": "player_1",
+			"createdAt": "2024-02-28T00:51:11.445Z",
+			"updatedAt": "2024-02-28T00:51:11.445Z"
+		},
+		{
+			"player_id": "player_2",
+			"createdAt": "2024-02-28T03:00:34.478Z",
+			"updatedAt": "2024-02-28T03:00:34.478Z"
+		},
+		{
+			"player_id": "player_3",
+			"createdAt": "2024-02-29T17:39:59.389Z",
+   			...
+			
+		},	
+```
+
+/player/id
+```
+{
+	"player": {
+		"player_id": "player_1",
+		"createdAt": "2024-02-28T00:51:11.445Z",
+		"updatedAt": "2024-02-28T00:51:11.445Z",
+		"saved_game": [
+			{
+				"id": 18,
+				"act": 2,
+				"setting": "city",
+				"createdAt": "2024-02-28T00:51:16.369Z",
+				"updatedAt": "2024-02-28T00:52:06.217Z",
+				"player_id": "player_1",
+				"dialogue_id": "C1",
+				"concluded_settings": [
+    
 					{
-						"id": "F-CB",
-						"choice_text": "Embark on a mystical journey deeper into the unknown forest.",
-						"final_choice": false,
-						"dialogue_id_from": "F1",
-						"dialogue_id_to": "F2B"
+						"setting_name": "prologue"
 					},
 					{
-						"id": "F-CA",
-						"choice_text": "Seek guidance from whispers in towering trees.",
-						"final_choice": false,
-						"dialogue_id_from": "F1",
-						"dialogue_id_to": "F2A"
+						"setting_name": "forest"
 					}
-{
-				"id": "F2A",
-				"text": "You have chosen the path less traveled. The forest responds to your curiosity. Yet, challenges....",
 				]
-			},
+			}
+		]
+	}
+}
 ```
+/gameslot
+```
+{
+	"game_slots": [
+		{
+			"id": 3,
+			"act": 2,
+			"setting": "city",
+			"createdAt": "2024-02-28T00:51:16.369Z",
+			"updatedAt": "2024-02-28T00:52:06.217Z",
+			"player_id": "player_1",
+			"dialogue_id": "C1"
+		},
+		{
+			"id": 5,
+			"act": 1,
+			"setting": "desert",
+			"createdAt": "2024-02-28T03:00:40.798Z",
+			"updatedAt": "2024-02-28T03:01:04.760Z",
+			"player_id": "player_2",
+			"dialogue_id": "D1"
+		},
+  		{...}
+```
+/gameslot/id
+```
+{
+	"game": {
+		"id": 3,
+		"act": 2,
+		"setting": "city",
+		"createdAt": "2024-02-28T00:51:16.369Z",
+		"updatedAt": "2024-02-28T00:52:06.217Z",
+		"player_id": "player_1",
+		"dialogue_id": "C1",
+		"concluded_settings": [
+  
+			{
+				"setting_name": "prologue"
+			},
+			{
+				"setting_name": "forest"
+			}
+		]
+	}
+}
+```
+
 
