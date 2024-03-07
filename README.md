@@ -5,6 +5,7 @@
   - [Description](#description)
   - [Tech Stack](#tech-stack)
   - [Installation](#installation)
+  - [Endpoints](#endpoints)
 
 ## Description
 
@@ -54,4 +55,22 @@ After package installation, to set the application live, run the following comma
 $ npm run start
 ```
 
+## Endpoints
+
+/setting
+```
+{
+	"settings": [
+		{
+			"name": "forest",
+			"background_pic": "images/settings/forest2.png",
+			"character": "hooded_figure"
+		},
+		{
+			"name": "desert",
+			"background_pic": "images/settings/desert.gif",
+			"character": "snake"
+		},
+    {...}
+```
 
