@@ -224,4 +224,28 @@ $ npm run start
 }
 ```
 
+/progress
+```
+{
+	"progress": [
+			{
+				"id": 1,
+				"createdAt": "2024-02-28T00:51:32.526Z",
+				"updatedAt": "2024-02-28T00:51:32.526Z",
+				"saved_game_id": 3,
+				"setting_name": "prologue"
+			},
+			{
+				"id": 2,
+				"createdAt": "2024-02-28T00:52:05.404Z",
+				"updatedAt": "2024-02-28T00:52:05.404Z",
+				"saved_game_id": 3,
+				"setting_name": "forest"
+			},
+			{...},
+		]
+}
+
+
+
 
