@@ -39,7 +39,7 @@ This application was developed with the support of the following tools:
 
 To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance with PostgreSQL, which is necessary to run this application. 
 
-If you already have Postgres installed from the server directory, run: 
+If you already have Postgres installed, run the following command from the server directory:
 
 ```shell
 $ npm run setup_local
