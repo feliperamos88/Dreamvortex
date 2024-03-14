@@ -11,7 +11,11 @@ if (process.env.DATABASE) {
       logging: false,
     });
   } else {
-    sequelize = new Sequelize(process.env.LOCAL_DB_URL, { logging: false });
+    sequelize = new Sequelize(process.env.LOCAL_DB_URL, {
+      dialectOptions: {
+        multipleStatements: true,
+      },
+    });
   }
 }
 
