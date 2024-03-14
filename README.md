@@ -36,23 +36,19 @@ This application was developed with the support of the following tools:
 
 ## Installation
 
-To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by either passing the connection parameters separately to the Sequelize constructor or by passing a single connection URI in the config.js file located in the server directory.
 
-Sequelize will automatically create the database, but there will be no data in it. Considering that you have PostgreSQL installed on your computer, to populate the database, run the following command from the server/database directory:
+To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance with PostgreSQL, which is necessary to run this application. 
+
+If you already have Postgres installed from the server directory, run: 
 
 ```shell
-$ psql < db_seed.sql
+$ npm run setup_local
 ```
 
-To install all the packages on the server and client side, run the following command from the server directory:
+The previous command will install all the packages on the server and client side, create the database, and seed it. After package installation, to set the application live, run the following command from the server directory: 
 
 ```shell
-$ npm run client
-```
-After package installation, to set the application live, run the following command from the server directory: 
-
-```shell
-$ npm run start
+$ npm start
 ```
 
 ## Endpoints
