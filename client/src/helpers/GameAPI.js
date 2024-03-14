@@ -3,7 +3,8 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 class GameAPI {
-  static BASE_URL = process.env.REACT_APP_API_URL;
+  static BASE_URL =
+    process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
 
   static async getAll(endpoint) {
     const response = await axios.get(`${this.BASE_URL}/${endpoint}`, {});
