@@ -45,7 +45,12 @@ If you already have Postgres installed, run the following command from the serve
 $ npm run setup_local
 ```
 
-The previous command will install all the packages on the server and client side, create the database, and seed it. After package installation, to set the application live, run the following command from the server directory: 
+The previous command:
+- Installs all the packages on the server and client-side
+- Create the database, and seed it
+- Creates a .env file in the /server/config directory with a DB_URI variable. This allows sequelize to connect with the DB.
+
+  After package installation, to set the application live, run the following command from the server directory: 
 
 ```shell
 $ npm start
