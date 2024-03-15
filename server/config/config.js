@@ -12,6 +12,7 @@ if (process.env.DATABASE) {
     });
   } else {
     sequelize = new Sequelize(process.env.LOCAL_DB_URL, {
+      logging: false,
       dialectOptions: {
         multipleStatements: true,
       },

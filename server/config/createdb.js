@@ -2,7 +2,7 @@ import pg from 'pg';
 import * as fs from 'fs';
 const { Client } = pg;
 import * as dotenv from 'dotenv';
-dotenv.config({});
+dotenv.config();
 
 const DB_NAME = process.env.DB_NAME || 'game_db';
 const DB_USER = process.env.DB_USER || 'postgres';
@@ -14,7 +14,7 @@ const DB_URI = `LOCAL_DB_URL=postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${D
 function createEnv() {
   const content = DB_URI;
   try {
-    fs.writeFileSync('.env', content);
+    fs.writeFileSync('./.env', content);
     console.log('.env file with DB_URI created');
   } catch (err) {
     console.error(err);

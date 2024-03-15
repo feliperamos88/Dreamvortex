@@ -7,8 +7,19 @@ import Progress from '../models/progress.js';
 import Choice from '../models/choice.js';
 import Dialogue from '../models/dialogue.js';
 
-await sequelize.sync({ force: true });
+try {
+  await sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+  await sequelize.sync({ force: true });
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
 
 const sql_string = fs.readFileSync('./database/db_seed.sql', 'utf8');
 
-sequelize.query(sql_string);
+try {
+  await sequelize.query(sql_string);
+  console.log('DB seeding concluded.');
+} catch (err) {
+  console.log(err);
+}
