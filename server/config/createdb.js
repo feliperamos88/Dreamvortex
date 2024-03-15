@@ -8,7 +8,8 @@ const DB_NAME = process.env.DB_NAME || 'game_db';
 const DB_USER = process.env.DB_USER || 'postgres';
 const DB_HOST = process.env.DB_HOST || 'localhost';
 const DB_PASSWORD = process.env.DB_PASSWORD || 'password';
-const DB_URI = `LOCAL_DB_URL=postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`;
+const DB_PORT = process.env.DB_PORT || '5432';
+const DB_URI = `LOCAL_DB_URL=postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 
 function createEnv() {
   const content = DB_URI;
@@ -25,7 +26,7 @@ async function setupDatabase() {
     host: DB_HOST,
     user: DB_USER,
     password: DB_PASSWORD,
-    port: 5432,
+    port: DB_PORT,
   });
 
   await client.connect();
