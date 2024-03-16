@@ -8,7 +8,7 @@
     "start": "node server",
     "setup": "npm install --prefix ../client && npm run build --prefix ../client && npm install",
     "setup_local": "npm install --prefix ../client && npm run build --prefix ../client && npm install && npm run seed",
-    "seed": "cd config && node createdb.js && node seed.js",
+    "seed": "node createdb.js && node seed.js",
     "dev": "concurrently \"npm run setup_local\" \"npm start\""
   },
   "type": "module",

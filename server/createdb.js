@@ -1,25 +1,13 @@
 import pg from 'pg';
-import * as fs from 'fs';
 const { Client } = pg;
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-const DB_NAME = process.env.DB_NAME || 'game_db';
-const DB_USER = process.env.DB_USER || 'postgres';
-const DB_HOST = process.env.DB_HOST || 'localhost';
-const DB_PASSWORD = process.env.DB_PASSWORD || 'password';
-const DB_PORT = process.env.DB_PORT || '5432';
-const DB_URI = `LOCAL_DB_URL=postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
-
-function createEnv() {
-  const content = DB_URI;
-  try {
-    fs.writeFileSync('./.env', content);
-    console.log('.env file with DB_URI created');
-  } catch (err) {
-    console.error(err);
-  }
-}
+const DB_NAME = process.env.DB_NAME;
+const DB_USER = process.env.DB_USER;
+const DB_HOST = process.env.DB_HOST;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const DB_PORT = process.env.DB_PORT;
 
 async function setupDatabase() {
   const client = new Client({
@@ -42,7 +30,6 @@ async function setupDatabase() {
   } else {
     console.log(`${DB_NAME} database already exists.`);
   }
-  createEnv();
 
   await client.end();
 }

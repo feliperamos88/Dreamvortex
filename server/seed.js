@@ -1,11 +1,11 @@
-import { sequelize } from './config.js';
+import { sequelize } from './config/config.js';
 import * as fs from 'fs';
-import Player from '../models/player.js';
-import PlayerDialogue from '../models/player-dialogue.js';
-import Setting from '../models/settings.js';
-import Progress from '../models/progress.js';
-import Choice from '../models/choice.js';
-import Dialogue from '../models/dialogue.js';
+import Player from './models/player.js';
+import PlayerDialogue from './models/player-dialogue.js';
+import Setting from './models/settings.js';
+import Progress from './models/progress.js';
+import Choice from './models/choice.js';
+import Dialogue from './models/dialogue.js';
 
 try {
   await sequelize.authenticate();

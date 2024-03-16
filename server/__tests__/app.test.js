@@ -1,18 +1,20 @@
 process.env.NODE_ENV = 'test';
-import { exec } from 'child_process';
 import { sequelize } from '../config/config.js';
+import * as fs from 'fs';
+import Player from './models/player.js';
+import PlayerDialogue from './models/player-dialogue.js';
+import Setting from './models/settings.js';
+import Progress from './models/progress.js';
+import Choice from './models/choice.js';
+import Dialogue from './models/dialogue.js';
 import app from '../app.js';
 import request from 'supertest';
 
 beforeAll(async () => {
-  exec('cd ./database && psql < db_test_seed.sql', (err, output) => {
-    if (err) {
-      console.error('could not execute command: ', err);
-      return;
-    } else {
-      console.log(output);
-    }
-  });
+  await sequelize.sync({ force: true });
+  const sql_string = fs.readFileSync('../database/db_seed_test.sql', 'utf8');
+  await sequelize.query(sql_string);
+  console.log('DB_TEST seeding concluded.');
 });
 
 describe('GET /api/setting', () => {
@@ -72,6 +74,6 @@ describe('DELETE /api/player', () => {
 });
 
 afterAll(async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.drop();
   await sequelize.close();
 });
