@@ -5,6 +5,7 @@
   - [Description](#description)
   - [Tech Stack](#tech-stack)
   - [Installation](#installation)
+  - [Testing](#testing)
   - [Endpoints](#endpoints)
 
 ## Description
@@ -36,25 +37,44 @@ This application was developed with the support of the following tools:
 
 ## Installation
 
+### All of the following commands should be executed from the server directory
 
-To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance with PostgreSQL, which is necessary to run this application. 
 
-If you already have Postgres installed, edit the server/config/createdb.js file with your database configurations (port, user, name, password) or use the default values and run the following command from the server directory:
+- To install all the packages on both the fron-tend and back-end side, run:
+
+```shell
+$ node run setup
+```
+
+- To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by renaming the .env-example file, located in the server directory, to just .env and passing the connection parameters to each variable. The config.js file, located in server/config, will look for the variables in the .env file and create the Sequelize URI. 
+
+If you don't have the database created, you have the option to create it after you pass the parameters to the .env file by running:
+
+```shell
+$ node createdb.js
+```
+
+This will create the database based on the parameters that you passed. If you already have the database and passed the connection parameters, run the following command to seed the database:
+
+```shell
+$ node seed.js
+```
+
+To install all the packages, create the database, and seed it after passing the parameters to the .env file, you can run the single command:
 
 ```shell
 $ npm run setup_local
 ```
 
-The previous command:
-- Installs all the packages on the server and client-side
-- Create the database, and seed it
-- Creates a .env file in the /server/config directory with a DB_URI variable. This allows sequelize to connect with the DB.
-
-  After package installation, to set the application live, run the following command from the server directory: 
+After package installation and database connection, to set the application live, run the following command from the server directory: 
 
 ```shell
 $ npm start
 ```
+
+## Testing
+
+Make sure to change the database name to a "database_test" name in the .env file since Sequelize uses the same parameters to create the URI for the test database. 
 
 ## Endpoints
 
