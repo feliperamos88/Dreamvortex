@@ -1,18 +1,12 @@
 process.env.NODE_ENV = 'test';
 import { sequelize } from '../config/config.js';
 import * as fs from 'fs';
-import Player from './models/player.js';
-import PlayerDialogue from './models/player-dialogue.js';
-import Setting from './models/settings.js';
-import Progress from './models/progress.js';
-import Choice from './models/choice.js';
-import Dialogue from './models/dialogue.js';
 import app from '../app.js';
 import request from 'supertest';
 
 beforeAll(async () => {
   await sequelize.sync({ force: true });
-  const sql_string = fs.readFileSync('../database/db_seed_test.sql', 'utf8');
+  const sql_string = fs.readFileSync('./database/db_test_seed.sql', 'utf8');
   await sequelize.query(sql_string);
   console.log('DB_TEST seeding concluded.');
 });
