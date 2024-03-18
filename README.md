@@ -7,6 +7,7 @@
   - [Installation](#installation)
   - [Testing](#testing)
   - [Endpoints](#endpoints)
+  - [Credits](#credits)
 
 ## Description
 
@@ -60,7 +61,7 @@ This will create the database based on the parameters that you passed. If you al
 $ node seed.js
 ```
 
-To install all the packages, create the database, and seed it after passing the parameters to the .env file, you can run the single command:
+To install all the packages, create the database, and seed it after passing the parameters to the .env file, you can do it with a single command:
 
 ```shell
 $ npm run setup_local
@@ -74,7 +75,7 @@ $ npm start
 
 ## Testing
 
-Make sure to change the database name to a "database_test" name in the .env file since Sequelize uses the same parameters to create the URI for the test database. 
+Since Sequelize uses the same .env variables parameters to create the URI for the test database in the config.js file, it's recommended to set a "database_test name" different from the non-testing database name in the .env file to avoid overwriting your local development database with the test database data.
 
 ## Endpoints
 
@@ -270,6 +271,19 @@ Make sure to change the database name to a "database_test" name in the .env file
 		]
 }
 
+## Credits
 
+### Audio:
 
+- Chiptune sound: https://pixabay.com/sound-effects/collect-ring-15982/
+- Opening sequence music (Morbid Curiosity): https://freemusicarchive.org/music/rhapsody/single/a-morbid-curiosity-chiptune-version/
+
+### Images:
+
+- City (main menu): https://mrwallpaper.com/wallpapers/interactive-cityscape-sunset-wi846llj22rz7sa9.html
+- Ocean: https://gifdb.com/gif/sunrise-ocean-pixel-fxxn1c95tqe1wzbo.html
+- Forest: https://dribbble.com/shots/6866155-Some-trees
+- Desert: https://www.deviantart.com/camilaxiao/art/Pixel-Art-Desert-Landscape-890087305
+- Sky: https://gifer.com/en/Ir4 
+- Urban: https://www.pinterest.com/pin/313985405260907273/
 
