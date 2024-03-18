@@ -31,7 +31,7 @@ Features:
 This application was developed with the support of the following tools:
 
 - Programming languages: [JavaScript](https://www.javascript.com)
-- Libraries/Frameworks: [Express](https://expressjs.com), [React](https://react.dev)
+- Libraries/Frameworks: [Express](https://expressjs.com), [React](https://react.dev), [Node](https://nodejs.org/en)
 - Database storage and management: [PostgreSQL](https://www.postgresql.org)
 
 
