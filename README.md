@@ -270,6 +270,7 @@ Since Sequelize uses the same .env variables parameters to create the URI for th
 			{...},
 		]
 }
+```
 
 ## Credits
 
