@@ -72,6 +72,9 @@ After package installation and database connection, to set the application live,
 ```shell
 $ npm start
 ```
+## Testing
+
+Sequelize relies on environment variables stored in a .env file to build the connection string (URI) for your database. To prevent accidental data loss, it's highly recommended to define a separate database name specifically for testing purposes in your .env file.  Creating a "database_test name" that is different from the non-testing database name in the .env file avoids overwriting your local development database with the test database data.
 
 ## Game API class
 
@@ -82,10 +85,6 @@ There are two ways to configure the API URL:
 - Manual Change: You can directly modify the URL within the gameApi.js file for specific scenarios.
 
 - Environment Variable: Create a .env file in the client directory and define a variable named REACT_APP_API_URL 
-
-## Testing
-
-Sequelize relies on environment variables stored in a .env file to build the connection string (URI) for your database. To prevent accidental data loss, it's highly recommended to define a separate database name specifically for testing purposes in your .env file.  Creating a "database_test name" that is different from the non-testing database name in the .env file avoids overwriting your local development database with the test database data.
 
 ## Endpoints
 
