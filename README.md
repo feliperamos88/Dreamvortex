@@ -6,6 +6,7 @@
   - [Tech Stack](#tech-stack)
   - [Installation](#installation)
   - [Testing](#testing)
+  - [Game API Class](#game-api-class)
   - [Endpoints](#endpoints)
   - [Credits](#credits)
 
@@ -40,14 +41,13 @@ This application was developed with the support of the following tools:
 
 ### All of the following commands should be executed from the server directory
 
-
-- To install all the packages on both the fron-tend and back-end side, run:
+To install all the packages on both the fron-tend and back-end side, run:
 
 ```shell
 $ node run setup
 ```
 
-- To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by renaming the .env-example file, located in the server directory, to just .env and passing the connection parameters to each variable. The config.js file, located in server/config, will look for the variables in the .env file and create the Sequelize URI. 
+To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by renaming the .env-example file, located in the server directory, to just .env and passing the connection parameters to each variable. The config.js file, located in server/config, will look for the variables in the .env file and create the Sequelize URI. 
 
 If you don't have the database created, you have the option to create it after you pass the parameters to the .env file by running:
 
@@ -73,9 +73,19 @@ After package installation and database connection, to set the application live,
 $ npm start
 ```
 
+## Game API class
+
+In order for your frontend to interact with the backend server, it communicates through a class called gameApi.js located in client/src/helpers.GameAPI.js.  This class handles sending requests to the server's API. By default, the API URL is set to the client's local host, which is useful for development and testing purposes.
+
+There are two ways to configure the API URL:
+
+- Manual Change: You can directly modify the URL within the gameApi.js file for specific scenarios.
+
+- Environment Variable: Create a .env file in the client directory and define a variable named REACT_APP_API_URL 
+
 ## Testing
 
-Since Sequelize uses the same .env variables parameters to create the URI for the test database in the config.js file, it's recommended to set a "database_test name" different from the non-testing database name in the .env file to avoid overwriting your local development database with the test database data.
+Sequelize relies on environment variables stored in a .env file to build the connection string (URI) for your database. To prevent accidental data loss, it's highly recommended to define a separate database name specifically for testing purposes in your .env file.  Creating a "database_test name" that is different from the non-testing database name in the .env file avoids overwriting your local development database with the test database data.
 
 ## Endpoints
 
