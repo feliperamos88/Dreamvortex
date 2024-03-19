@@ -5,7 +5,10 @@
   - [Description](#description)
   - [Tech Stack](#tech-stack)
   - [Installation](#installation)
+  - [Testing](#testing)
+  - [Game API Class](#game-api-class)
   - [Endpoints](#endpoints)
+  - [Credits](#credits)
 
 ## Description
 
@@ -30,31 +33,58 @@ Features:
 This application was developed with the support of the following tools:
 
 - Programming languages: [JavaScript](https://www.javascript.com)
-- Libraries/Frameworks: [Express](https://expressjs.com), [React](https://react.dev)
+- Libraries/Frameworks: [Express](https://expressjs.com), [React](https://react.dev), [Node.js](https://nodejs.org/en)
 - Database storage and management: [PostgreSQL](https://www.postgresql.org)
 
 
 ## Installation
 
+### All of the following commands should be executed from the server directory
 
-To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance with PostgreSQL, which is necessary to run this application. 
+To install all the packages on both the fron-tend and back-end side, run:
 
-If you already have Postgres installed, edit the server/config/createdb.js file with your database configurations (port, user, name, password) or use the default values and run the following command from the server directory:
+```shell
+$ node run setup
+```
+
+To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by renaming the .env-example file, located in the server directory, to just .env and passing the connection parameters to each variable. The config.js file, located in server/config, will look for the variables in the .env file and create the Sequelize URI. 
+
+If you don't have the database created, you have the option to create it after you pass the parameters to the .env file by running:
+
+```shell
+$ node createdb.js
+```
+
+This will create the database based on the parameters that you passed. If you already have the database and passed the connection parameters, run the following command to seed the database:
+
+```shell
+$ node seed.js
+```
+
+To install all the packages, create the database, and seed it after passing the parameters to the .env file, you can do it with a single command:
 
 ```shell
 $ npm run setup_local
 ```
 
-The previous command:
-- Installs all the packages on the server and client-side
-- Create the database, and seed it
-- Creates a .env file in the /server/config directory with a DB_URI variable. This allows sequelize to connect with the DB.
-
-  After package installation, to set the application live, run the following command from the server directory: 
+After package installation and database connection, to set the application live, run the following command from the server directory: 
 
 ```shell
 $ npm start
 ```
+## Testing
+
+Sequelize relies on environment variables stored in a .env file to build the connection string (URI) for your database. To prevent accidental data loss, it's highly recommended to define a separate database name specifically for testing purposes in your .env file.  Creating a "database_test name" that is different from the non-testing database name in the .env file avoids overwriting your local development database with the test database data.
+
+## Game API class
+
+The frontend interacts with the backend server through a class called gameApi.js located in client/src/helpers.GameAPI.js.  This class handles sending requests to the server's API. By default, the API URL is set to the client's local host (http<area>://localhost:3000/api/{endpoint}).
+
+There are two ways to configure the API URL:
+
+- Manual Change: You can directly modify the URL within the gameApi.js file for specific scenarios.
+
+- Environment Variable: Create a .env file in the client directory and define a variable named REACT_APP_API_URL 
 
 ## Endpoints
 
@@ -249,7 +279,21 @@ $ npm start
 			{...},
 		]
 }
+```
 
+## Credits
 
+### Audio:
 
+- Chiptune sound: https://pixabay.com/sound-effects/collect-ring-15982/
+- Opening sequence music (Morbid Curiosity): https://freemusicarchive.org/music/rhapsody/single/a-morbid-curiosity-chiptune-version/
+
+### Images:
+
+- City (main menu): https://mrwallpaper.com/wallpapers/interactive-cityscape-sunset-wi846llj22rz7sa9.html
+- Ocean: https://gifdb.com/gif/sunrise-ocean-pixel-fxxn1c95tqe1wzbo.html
+- Forest: https://dribbble.com/shots/6866155-Some-trees
+- Desert: https://www.deviantart.com/camilaxiao/art/Pixel-Art-Desert-Landscape-890087305
+- Sky: https://gifer.com/en/Ir4 
+- Urban: https://www.pinterest.com/pin/313985405260907273/
 
