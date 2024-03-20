@@ -41,7 +41,7 @@ This application was developed with the support of the following tools:
 
 ### All of the following commands should be executed from the server directory
 
-To install all the packages on both the fron-tend and back-end side, run:
+To install all the packages on both the frontend and backend, run:
 
 ```shell
 $ node run setup
