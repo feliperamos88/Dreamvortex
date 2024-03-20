@@ -47,7 +47,7 @@ To install all the packages on both the frontend and backend, run:
 $ node run setup
 ```
 
-To connect to the database, you must create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be done by renaming the .env-example file, located in the server directory, to just .env and passing the connection parameters to each variable. The config.js file, located in server/config, will look for the variables in the .env file and create the Sequelize URI. 
+To connect to the database, you'll need to create a [Sequelize](https://sequelize.org/docs/v6/getting-started/) instance. This can be achieved by renaming the .env-example file in the server directory to simply .env. Then, you'll provide the connection parameters within each variable of the .env file. The config.js file, located in server/config, will read these variables and construct the Sequelize URI for you.
 
 If you don't have the database created, you have the option to create it after you pass the parameters to the .env file by running:
 
@@ -55,7 +55,9 @@ If you don't have the database created, you have the option to create it after y
 $ node createdb.js
 ```
 
-This will create the database based on the parameters that you passed. If you already have the database and passed the connection parameters, run the following command to seed the database:
+The last command will create the database based on the parameters that you passed.
+
+If you already have the database and passed the connection parameters, run the following command to seed the database:
 
 ```shell
 $ node seed.js
