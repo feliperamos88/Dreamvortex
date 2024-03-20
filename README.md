@@ -33,7 +33,7 @@ Features:
 This application was developed with the support of the following tools:
 
 - Programming languages: [JavaScript](https://www.javascript.com)
-- Libraries/Frameworks: [Express](https://expressjs.com), [React](https://react.dev), [Node.js](https://nodejs.org/en)
+- Libraries/Frameworks: [Express](https://expressjs.com), [React](https://react.dev), [Node.js](https://nodejs.org/en), [Bootstrap](https://getbootstrap.com), [Sequelize](https://sequelize.org/docs/v6/getting-started/)
 - Database storage and management: [PostgreSQL](https://www.postgresql.org)
 
 
