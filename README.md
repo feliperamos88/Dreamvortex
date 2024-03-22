@@ -24,7 +24,7 @@ Features:
 
 - Dynamic Narrative: Your choices impact the story, creating a personalized experience.
 - Expanding Adventure: Demo showcases the core, with more acts planned for regular addition.
-- Persistent Decisions: Saved data lets you explore alternate paths and see the consequences. The data is saved on the database and accessed via a "load game" menu.
+- Persistent Decisions: Saved data lets you explore alternate paths and see the consequences. The data is automatically saved in the database at the beginning of each act and accessed via a "load game" menu.
 - Secure Your Progress: Account creation and login enable progress tracking and achievement comparison (no authentication at this point)
 - Visual presentation: Images and CSS animations enhance the text-based experience.
 
