@@ -80,7 +80,7 @@ Sequelize relies on environment variables stored in a .env file to build the con
 
 ## Game API class
 
-The frontend interacts with the backend server through a class called gameApi.js located in client/src/helpers.GameAPI.js.  This class handles sending requests to the server's API. By default, the API URL is set to the client's local host (http<area>://localhost:3000/api/{endpoint}).
+The frontend interacts with the backend server through the wrapper class GameAPI located in client/src/helpers/GameAPI.js.  This class handles sending requests to the server's API. By default, the API URL is set to the client's local host (http<area>://localhost:3000/api/{endpoint}).
 
 There are two ways to configure the API URL:
 
