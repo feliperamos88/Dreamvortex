@@ -63,7 +63,7 @@ If you already have the database and passed the connection parameters, run the f
 $ node seed.js
 ```
 
-To install all the packages, create the database, and seed it after passing the parameters to the .env file, you can do it with a single command:
+Optionally, you can install all the packages, create the database, and seed it after passing the parameters to the .env file with a single command:
 
 ```shell
 $ npm run setup_local
