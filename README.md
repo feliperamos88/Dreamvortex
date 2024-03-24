@@ -92,7 +92,7 @@ There are two ways to configure the API URL:
 
 ### GET
 
-/setting
+api/setting
 ```
 {
 	"settings": [
@@ -111,7 +111,7 @@ There are two ways to configure the API URL:
 }
 ```
 
-/setting/id
+api/setting/id
 ```
 {
 	"setting": {
@@ -153,7 +153,7 @@ There are two ways to configure the API URL:
 }
 ```
 
-/player
+api/player
 ```
 	{
 	"players": [
@@ -178,7 +178,7 @@ There are two ways to configure the API URL:
 	}
 ```
 
-/player/id
+api/player/id
 ```
 {
 	"player": {
@@ -209,7 +209,7 @@ There are two ways to configure the API URL:
 }
 ```
 
-/gameslot
+api/gameslot
 ```
 {
 	"game_slots": [
@@ -236,7 +236,7 @@ There are two ways to configure the API URL:
 }
 ```
 
-/gameslot/id
+api/gameslot/id
 ```
 {
 	"game": {
@@ -260,7 +260,7 @@ There are two ways to configure the API URL:
 }
 ```
 
-/progress
+api/progress
 ```
 {
 	"progress": [
