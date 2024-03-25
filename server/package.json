@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "start": "node server",
     "setup": "npm install --prefix ../client && npm run build --prefix ../client && npm install",
     "setup_local": "npm install --prefix ../client && npm run build --prefix ../client && npm install && npm run seed",
