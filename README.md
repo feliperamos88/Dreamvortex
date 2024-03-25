@@ -84,7 +84,7 @@ The frontend interacts with the backend server through the wrapper class GameAPI
 
 There are two ways to configure the API URL:
 
-- Manual Change: You can directly modify the URL within the gameApi.js file for specific scenarios.
+- Manual Change: You can directly modify the URL within the GameAPI class
 
 - Environment Variable: Create a .env file in the client directory and define a variable named REACT_APP_API_URL 
 
