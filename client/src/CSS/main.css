@@ -58,6 +58,11 @@
   animation: Hide-Menu 4s ease 1s forwards;
 }
 
+.menu-hidden2 {
+  opacity: 1;
+  animation: Hide-Menu 4s ease 3s forwards;
+}
+
 @keyframes Hide-Menu {
   from {
     opacity: 1;

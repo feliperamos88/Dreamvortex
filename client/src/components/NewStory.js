@@ -46,10 +46,10 @@ const NewStory = ({ newGame, setNewGame }) => {
         await createNewGame();
         const { data } = await loadPlayer(currentPlayer.player_id);
         setCurrentPlayer(data.player);
-        setMenuDisplay('menu-hidden');
+        setMenuDisplay('menu-hidden2');
         setTimeout(() => {
           navigate('/prologue');
-        }, 7000);
+        }, 6000);
       } catch (err) {
         setAlertMSG(failureMSG);
       }
