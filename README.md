@@ -24,7 +24,7 @@ Features:
 
 - Dynamic Narrative: Your choices impact the story, creating a personalized experience.
 - Expanding Adventure: Demo showcases the core, with more acts planned for regular addition.
-- Persistent Decisions: Saved data lets you explore alternate paths and see the consequences. The data is automatically saved in the database at the beginning of each act and accessed via a "load game" menu.
+- Persistent Decisions: The progress is `automatically saved in the database at the beginning of each act` and accessed via a "load game" menu.
 - Secure Your Progress: Account creation and login enable progress tracking and achievement comparison (no authentication at this point)
 - Visual presentation: Images and CSS animations enhance the text-based experience.
 
@@ -80,11 +80,11 @@ Sequelize relies on environment variables stored in a .env file to build the con
 
 ## Game API class
 
-The frontend interacts with the backend server through the wrapper class GameAPI located in client/src/helpers/GameAPI.js.  This class handles sending requests to the server's API. By default, the API URL is set to the client's local host (http<area>://localhost:3000/api/{endpoint}).
+The frontend interacts with the backend server through the wrapper class GameAPI located in client/src/helpers/GameAPI.js. By default, the API URL is set to the client's local host (http<area>://localhost:3000/api/{endpoint}).
 
 There are two ways to configure the API URL:
 
-- Manual Change: You can directly modify the URL within the gameApi.js file for specific scenarios.
+- Manual Change: You can directly modify the URL within the GameAPI class
 
 - Environment Variable: Create a .env file in the client directory and define a variable named REACT_APP_API_URL 
 
