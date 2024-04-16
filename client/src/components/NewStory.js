@@ -18,7 +18,8 @@ const NewStory = ({ newGame, setNewGame }) => {
 
   const memoryFullMSG =
     'You have reached the limit of your save game slots (3). To start a new game, delete one of your slots';
-  const creatingGameMSG = 'Creating new game';
+  const creatingGameMSG =
+    'Creating new game. Your game will be saved automatically on every act change.';
   const failureMSG = 'Sorry, but something went wrong!';
 
   const loadPlayer = (id) => {
@@ -48,7 +49,7 @@ const NewStory = ({ newGame, setNewGame }) => {
         setMenuDisplay('menu-hidden');
         setTimeout(() => {
           navigate('/prologue');
-        }, 6000);
+        }, 7000);
       } catch (err) {
         setAlertMSG(failureMSG);
       }
