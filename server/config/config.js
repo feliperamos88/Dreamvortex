@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'test') {
   });
 } else {
   if (process.env.DB_URI) {
-    sequelize = new Sequelize(process.env.DATABASE, { logging: false });
+    sequelize = new Sequelize(process.env.DB_URI, { logging: false });
   } else {
     sequelize = new Sequelize(createDB_URI(), {
       logging: false,
