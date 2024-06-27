@@ -1,14 +1,8 @@
 .opening-warnings {
-  margin-top: 28dvh;
+  margin-top: 30dvh;
   margin-left: 15%;
   margin-right: 15%;
   text-align: center;
-}
-
-@media only screen and (max-width: 768px) {
-  .opening-warnings {
-    margin-top: 20dvh;
-  }
 }
 
 .icons-container {
@@ -58,24 +52,6 @@
   font-weight: 900;
   text-shadow: 3px 3px black;
 }
-
-@media only screen and (max-width: 640px) {
-  .game-title {
-    /* margin: 16% 25% 0 35%; */
-    font-size: 1.1em;
-    margin: 15% 25% 0 42%;
-  }
-}
-
-@media only screen and (min-width: 600px) and (max-width: 800px) {
-  .game-title {
-    /* margin: 16% 25% 0 35%; */
-    font-size: 1.3em;
-  }
-}
-
-/* @media only screen and (min-width: 1200px) {
-} */
 
 .menu-hidden {
   opacity: 1;

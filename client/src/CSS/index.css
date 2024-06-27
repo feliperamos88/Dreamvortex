@@ -26,11 +26,6 @@ code {
     width: 90dvw;
     height: 20dvh;
   }
-  .game-title {
-    /* margin: 16% 25% 0 35%; */
-    font-size: 1.1em;
-    margin: 18% 25% 0 42%;
-  }
 }
 
 @media (min-width: 600px) and (max-width: 1200px) {
@@ -38,10 +33,6 @@ code {
   .setting-image-container {
     width: 80dvw;
     height: 30dvh;
-  }
-  .game-title {
-    /* margin: 16% 25% 0 35%; */
-    font-size: 1.1em;
   }
 }
 
