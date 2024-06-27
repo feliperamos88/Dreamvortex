@@ -34,6 +34,7 @@ code {
   .setting-image-container {
     width: 80dvw;
     height: 30dvh;
+    margin: auto;
   }
 }
 
@@ -42,5 +43,6 @@ code {
   .setting-image-container {
     width: 70dvw;
     height: 40dvh;
+    margin: auto;
   }
 }

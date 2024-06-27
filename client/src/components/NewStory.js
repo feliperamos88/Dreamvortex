@@ -80,6 +80,7 @@ const NewStory = ({ newGame, setNewGame }) => {
               alertMSG === failureMSG ? { color: 'red' } : { color: 'purple' }
             }
             role="alert"
+            className="alert-msg"
           >
             {alertMSG}{' '}
             {alertMSG === creatingGameMSG && (

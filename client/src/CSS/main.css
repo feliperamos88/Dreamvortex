@@ -11,6 +11,13 @@
   }
 }
 
+.alert-msg {
+  text-align: center;
+  margin: auto;
+  padding-right: 1px;
+  padding-left: 1px;
+}
+
 .icons-container {
   display: flex;
   justify-content: center;
