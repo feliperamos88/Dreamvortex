@@ -73,7 +73,7 @@ const NewStory = ({ newGame, setNewGame }) => {
 
   return (
     <>
-      <div className="mt-3">
+      <div className="mt-3" style={{ margin: auto }}>
         {newGame && (
           <div
             style={
