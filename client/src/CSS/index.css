@@ -25,6 +25,7 @@ code {
   .setting-image-container {
     width: 90dvw;
     height: 20dvh;
+    margin: auto;
   }
 }
 
